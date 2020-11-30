@@ -13,18 +13,7 @@ code {
     monospace;
 }
 
-.bg-letter {
+.dashboard-bg-image {
   position: fixed;
-  top: 80%;
-  left: 90%;
-  transform: translate(-50%, -50%);
-  padding: 0;
-  margin: 0;
-  font-size: 100em;
-  font-weight: bold;
-  background: url(/src/assets/images/bg3.jpg) 32%;
-  background-size: cover;
-  background-clip: text;
-  -webkit-text-fill-color: transparent !important;
-  -webkit-background-clip: text !important;
+  z-index: -40;
 }
