@@ -12,7 +12,7 @@ export class Dashboard extends Component {
             <PostList />
           </div>
           <div className="col s12 m5 offset-m1 dashboard-bg-image">
-            <BackgroundSvg />
+            <BackgroundSvg style={{ width: 1000 }} />
           </div>
         </div>
       </div>
