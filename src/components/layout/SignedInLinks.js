@@ -8,10 +8,13 @@ const SignedInLinks = () => {
         <NavLink to="/">Schedule Event</NavLink>
       </li>
       <li>
+        <NavLink to="/">Your Devices</NavLink>
+      </li>
+      <li>
         <NavLink to="/">Log Out</NavLink>
       </li>
       <li>
-        <NavLink to="/" className="btn btn-floating green darken-4">
+        <NavLink to="/" className="btn btn-floating green darken-3">
           NN
         </NavLink>
       </li>
