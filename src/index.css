@@ -13,6 +13,8 @@ code {
     monospace;
 }
 
+/* Background Styling */
+
 .bg-image {
   font-size: 70rem;
   text-transform: uppercase;
@@ -31,6 +33,8 @@ code {
   z-index: -40;
 }
 
+/* Navbar Styling */
+
 .brand-logo {
   font-family: "Major Mono Display", monospace;
 }
@@ -38,6 +42,8 @@ code {
 nav li {
   letter-spacing: 1.2px;
 }
+
+/* Form Styling */
 
 .form-container {
   width: 100%;
@@ -61,6 +67,7 @@ nav li {
 
 .form-container .btn {
   width: 200px;
+  border-radius: 20px;
 }
 
 .form-container .input-field input,
@@ -70,4 +77,30 @@ nav li {
 
 .form-container .input-field label {
   letter-spacing: 2px;
+}
+
+/* Posts Styling */
+
+.post-summary .card-title,
+.post-details .card-title {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.post-details .card-title {
+  padding-bottom: 20px;
+}
+
+.post-details .post-content {
+  padding: 0 50px;
+}
+
+.post-summary-posted-by {
+  margin-top: 20px !important;
+  padding: 10px 0 0 0;
+  border-top: 1px solid rgba(128, 128, 128, 0.212);
+}
+
+.post-summary-username {
+  font-weight: 600;
 }
