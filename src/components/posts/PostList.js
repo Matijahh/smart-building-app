@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import PostSummary from "./PostSummary";
 
@@ -7,7 +8,11 @@ const PostList = ({ posts }) => {
     <div className="post-list section">
       {posts &&
         posts.map((post) => {
-          return <PostSummary post={post} key={post.id} />;
+          return (
+            <Link to={`/post/${post.id}`}>
+              <PostSummary post={post} key={post.id} />
+            </Link>
+          );
         })}
     </div>
   );

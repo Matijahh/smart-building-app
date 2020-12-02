@@ -53,6 +53,10 @@ nav li {
   align-items: center;
 }
 
+.sign-in-form {
+  height: 100vh;
+}
+
 .form-container form {
   width: 600px;
 }
@@ -93,6 +97,12 @@ nav li {
 
 .post-details .post-content {
   padding: 0 50px;
+  font-size: 20px;
+}
+
+.loader-text {
+  font-size: 20px;
+  letter-spacing: 2px;
 }
 
 .post-summary-posted-by {

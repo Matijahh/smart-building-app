@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import PostDetails from "./components/posts/PostDetails";
-import { SignIn } from "./components/auth/SignIn";
+import SignIn from "./components/auth/SignIn";
 import CreatePost from "./components/posts/CreatePost";
 
 function App() {
