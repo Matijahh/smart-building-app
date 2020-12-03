@@ -93,6 +93,18 @@ nav li {
 
 /* Posts Styling */
 
+.post-summary {
+  border-radius: 20px;
+}
+
+.post-details .card {
+  border-radius: 30px;
+}
+
+.post-details .card .card-action {
+  border-radius: 0 0 30px 30px;
+}
+
 .post-summary .card-title,
 .post-details .card-title {
   font-weight: 600;

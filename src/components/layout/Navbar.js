@@ -6,14 +6,14 @@ import { signOut } from "../../store/actions/authActions";
 import SignedInLinks from "./SignedInLinks";
 
 const Navbar = (props) => {
-  const { auth } = props;
+  const { auth, profile } = props;
   return auth.uid ? (
     <nav className="nav-wrapper transparent z-depth-0">
       <div className="container">
         <Link to="/" className="brand-logo">
           SmartHome
         </Link>
-        <SignedInLinks />
+        <SignedInLinks profile={profile} />
       </div>
     </nav>
   ) : (
@@ -24,6 +24,7 @@ const Navbar = (props) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
+    profile: state.firebase.profile,
   };
 };
 
