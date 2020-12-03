@@ -39,6 +39,11 @@ code {
   font-family: "Major Mono Display", monospace;
 }
 
+.brand-logo-img {
+  background: url(./assets/images/logo-48.png);
+  background-size: cover;
+}
+
 nav li {
   letter-spacing: 1.2px;
 }
