@@ -45,6 +45,14 @@ nav li {
 
 /* Form Styling */
 
+.sign-in .brand-logo {
+  color: white;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .form-container {
   width: 100%;
   height: 80vh;

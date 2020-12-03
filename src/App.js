@@ -15,7 +15,7 @@ function App() {
         <Navbar />
         <h1 className="bg-image">S</h1>
         <Switch>
-          <Route exact path="/" component={SignIn} />
+          <Route exact path="/" component={Dashboard} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/post/:id" component={PostDetails} />
           <Route path="/signin" component={SignIn} />
