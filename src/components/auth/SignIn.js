@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { signIn } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
 
+// TODO: Add leaf logo to heading
+// TODO: Add switch button to go to sign up page
+// TODO: Add switch password visibility
+
 class SignIn extends Component {
   constructor(props) {
     super(props);

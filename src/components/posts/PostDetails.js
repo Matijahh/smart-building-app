@@ -5,6 +5,8 @@ import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import moment from "moment";
 
+// TODO: Add back button
+
 const PostDetails = (props) => {
   const { post, auth } = props;
   if (!auth.uid) {

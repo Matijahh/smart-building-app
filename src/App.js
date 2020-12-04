@@ -9,6 +9,8 @@ import SignIn from "./components/auth/SignIn";
 import CreatePost from "./components/posts/CreatePost";
 import SignUp from "./components/auth/SignUp";
 
+// TODO: Add 404 Error Page
+
 function App() {
   return (
     <BrowserRouter>

@@ -6,6 +6,9 @@ import { Redirect } from "react-router-dom";
 
 import PostList from "../posts/PostList";
 
+// TODO: Add leaf logo to heading
+// TODO: Add profile info section
+
 class Dashboard extends Component {
   render() {
     const { posts, auth } = this.props;

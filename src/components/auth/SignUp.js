@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { signUp } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
 
+// TODO: Add leaf logo to heading
+// TODO: Add switch button to go to sign in page
+// TODO: Add switch password visibility
+// TODO: Add more inputs for registration (apartment number, switch button to indicate the type of tenant, the sex)
+
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +78,7 @@ class SignUp extends Component {
             </div>
             <div className="input-field transparent">
               <label htmlFor="lastName" className="white-text">
-                LastName
+                Last Name
               </label>
               <input
                 type="text"
