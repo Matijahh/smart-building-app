@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signIn } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
-
-// TODO: Add leaf logo to heading
-// TODO: Add switch button to go to sign up page
-// TODO: Add switch password visibility
+import leafLogo from "../../assets/images/leaf-solid.svg";
 
 class SignIn extends Component {
   constructor(props) {
@@ -13,9 +10,11 @@ class SignIn extends Component {
     this.state = {
       email: "",
       password: "",
+      passVisibility: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
   }
 
   handleChange(e) {
@@ -29,6 +28,12 @@ class SignIn extends Component {
     this.props.signIn(this.state);
   }
 
+  handleVisibilityChange() {
+    this.setState({
+      passVisibility: !this.state.passVisibility,
+    });
+  }
+
   render() {
     const { auth, authError } = this.props;
     if (auth.uid) {
@@ -36,7 +41,10 @@ class SignIn extends Component {
     }
     return (
       <div className="sign-in">
-        <p className="brand-logo">SmartHome</p>
+        <p className="brand-logo">
+          SmartHome
+          <img style={{ width: 15 }} src={leafLogo} alt="logo" />
+        </p>
         <div className="container form-container valign-wrapper sign-in-form">
           <form onSubmit={this.handleSubmit} className="transparent">
             <h5 className="white-text center-align form-title">Sign In</h5>
@@ -56,16 +64,34 @@ class SignIn extends Component {
                 Password
               </label>
               <input
-                type="password"
+                type={this.state.passVisibility ? "text" : "password"}
                 id="password"
                 className="white-text"
                 onChange={this.handleChange}
               />
+              <i
+                className={`far fa-eye${
+                  this.state.passVisibility ? "-slash" : ""
+                }`}
+                onClick={this.handleVisibilityChange}
+              />
             </div>
             <div className="input-field transparent center-align">
-              <button className="waves-effect waves-light btn green darken-2 white-text">
+              <button
+                type="submit"
+                className="waves-effect waves-light btn green darken-2 white-text"
+              >
                 Login
               </button>
+              <div style={{ marginTop: 10 }}>
+                <button
+                  type="button"
+                  className="waves-effect waves-light btn-flat green-text text-darken-2"
+                  onClick={() => this.props.history.push("/signup")}
+                >
+                  Switch to Sign Up
+                </button>
+              </div>
               <div className="red-text center-align">
                 {authError ? <p>{authError}</p> : null}
               </div>

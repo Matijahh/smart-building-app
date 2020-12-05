@@ -16,7 +16,7 @@ code {
 /* Background Styling */
 
 .bg-image {
-  font-size: 70rem;
+  font-size: 80rem;
   text-transform: uppercase;
   font-weight: bolder;
   position: fixed;
@@ -37,11 +37,6 @@ code {
 
 .brand-logo {
   font-family: "Major Mono Display", monospace;
-}
-
-.brand-logo-img {
-  background: url(./assets/images/logo-48.png);
-  background-size: cover;
 }
 
 nav li {
@@ -82,7 +77,8 @@ nav li {
   padding-bottom: 20px;
 }
 
-.form-container .btn {
+.form-container .btn,
+.form-container .btn-flat {
   width: 200px;
   border-radius: 20px;
 }
@@ -94,6 +90,30 @@ nav li {
 
 .form-container .input-field label {
   letter-spacing: 2px;
+}
+
+.form-container .input-field .fa-eye,
+.form-container .input-field .fa-eye-slash {
+  position: absolute;
+  top: 35%;
+  right: 1%;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.select-gender,
+.apartment-input {
+  width: 30%;
+}
+
+.select-wrapper .select-dropdown {
+  color: #ffffff !important;
+  letter-spacing: 2px;
+}
+
+.select-wrapper .caret {
+  fill: #ffffff !important;
 }
 
 /* Posts Styling */
