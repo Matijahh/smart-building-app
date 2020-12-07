@@ -32,6 +32,7 @@ export const signUp = (newUser) => {
             initials: newUser.firstName[0] + newUser.lastName[0],
             gender: newUser.gender,
             apartmentNumber: newUser.apartmentNumber,
+            tenantCouncilPresident: newUser.tenantCouncilPresident,
           });
       })
       .then(() => {

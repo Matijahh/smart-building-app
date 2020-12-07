@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
+import leafLogo from "../../assets/images/leaf-solid.svg";
 
 import SignedInLinks from "./SignedInLinks";
 
@@ -12,6 +13,7 @@ const Navbar = (props) => {
       <div className="container">
         <Link to="/" className="brand-logo">
           SmartHome
+          <img style={{ width: 30 }} src={leafLogo} alt="logo" />
         </Link>
         <SignedInLinks profile={profile} />
       </div>

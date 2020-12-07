@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Profile from "./Profile";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
 import PostList from "../posts/PostList";
 
-// TODO: Add leaf logo to heading
 // TODO: Add profile info section
 
 class Dashboard extends Component {
@@ -21,7 +21,9 @@ class Dashboard extends Component {
           <div className="col s12 m8">
             <PostList posts={posts} />
           </div>
-          <div className="col s12 m3 offset-m1 dashboard-bg-image"></div>
+          <div className="col s12 m3 offset-m1 dashboard-bg-image">
+            <Profile />
+          </div>
         </div>
       </div>
     );

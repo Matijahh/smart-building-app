@@ -7,8 +7,6 @@ import M from "materialize-css";
 
 import leafLogo from "../../assets/images/leaf-solid.svg";
 
-// TODO: Add switch button to indicate the type of tenant
-
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -19,12 +17,15 @@ class SignUp extends Component {
       lastName: "",
       gender: "",
       apartmentNumber: 0,
-      tenantCouncilPresident: true,
+      tenantCouncilPresident: false,
       passVisibility: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+    this.handleTenantCouncilPresidentChange = this.handleTenantCouncilPresidentChange.bind(
+      this
+    );
   }
 
   componentDidMount() {
@@ -49,6 +50,12 @@ class SignUp extends Component {
   handleVisibilityChange() {
     this.setState({
       passVisibility: !this.state.passVisibility,
+    });
+  }
+
+  handleTenantCouncilPresidentChange() {
+    this.setState({
+      tenantCouncilPresident: !this.state.tenantCouncilPresident,
     });
   }
 
@@ -146,6 +153,16 @@ class SignUp extends Component {
                   className="white-text"
                   onChange={this.handleChange}
                 />
+              </div>
+              <div class="switch">
+                <label>
+                  <input
+                    type="checkbox"
+                    onChange={this.handleTenantCouncilPresidentChange}
+                  />
+                  <span class="lever"></span>
+                  Tenant Council Pres
+                </label>
               </div>
             </div>
             <div className="input-field transparent center-align">
