@@ -8,6 +8,7 @@ import PostDetails from "./components/posts/PostDetails";
 import SignIn from "./components/auth/SignIn";
 import CreatePost from "./components/posts/CreatePost";
 import SignUp from "./components/auth/SignUp";
+import Error from "./components/error/Error";
 
 // TODO: Add 404 Error Page
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/create" component={CreatePost} />
+          <Route path="*" component={Error} />
         </Switch>
       </div>
     </BrowserRouter>

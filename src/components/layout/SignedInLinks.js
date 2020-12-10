@@ -3,11 +3,12 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
 
-// TODO: Add Dashboard Link
-
 const SignedInLinks = (props) => {
   return (
     <ul className="right">
+      <li>
+        <NavLink to="/">Dashboard</NavLink>
+      </li>
       <li>
         <NavLink to="/create">Schedule Event</NavLink>
       </li>

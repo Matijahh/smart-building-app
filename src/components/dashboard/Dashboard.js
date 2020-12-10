@@ -7,8 +7,6 @@ import { Redirect } from "react-router-dom";
 
 import PostList from "../posts/PostList";
 
-// TODO: Add profile info section
-
 class Dashboard extends Component {
   render() {
     const { posts, auth } = this.props;
@@ -21,8 +19,8 @@ class Dashboard extends Component {
           <div className="col s12 m8">
             <PostList posts={posts} />
           </div>
-          <div className="col s12 m3 offset-m1 dashboard-bg-image">
-            <Profile />
+          <div className="col s12 m4">
+            <Profile uid={auth.uid} />
           </div>
         </div>
       </div>

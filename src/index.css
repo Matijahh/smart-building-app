@@ -147,8 +147,9 @@ input[type="checkbox"]:checked + .lever {
   border-radius: 30px;
 }
 
-.post-details .card .card-action {
-  border-radius: 0 0 30px 30px;
+.post-details .card .card-action,
+.profile-card-action {
+  border-radius: 0 0 30px 30px !important;
 }
 
 .post-summary .card-title,
@@ -166,6 +167,12 @@ input[type="checkbox"]:checked + .lever {
   font-size: 20px;
 }
 
+.post-details i {
+  font-size: 24px;
+  color: #388e3c;
+  cursor: pointer;
+}
+
 .loader-text {
   font-size: 20px;
   letter-spacing: 2px;
@@ -179,4 +186,52 @@ input[type="checkbox"]:checked + .lever {
 
 .post-summary-username {
   font-weight: 600;
+}
+
+/* Profil styling */
+
+.profile-card {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card i {
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  color: #388e3c;
+}
+
+.border-radius {
+  border-radius: 30px;
+}
+
+.profile-card span {
+  display: flex;
+  justify-content: center;
+}
+
+.sticker {
+  background-color: #388e3c;
+  color: #ffffff;
+  border-radius: 20px;
+  width: 50%;
+  margin: auto;
+  font-weight: bold;
+}
+
+.profile-card .card-title {
+  font-weight: bold;
+}
+
+.bolder {
+  font-weight: bold;
+}
+
+/* 404 Error Page styling */
+
+.btn-error {
+  width: 30%;
+  border-radius: 20px;
 }

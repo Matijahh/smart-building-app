@@ -5,8 +5,6 @@ import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import moment from "moment";
 
-// TODO: Add back button
-
 const PostDetails = (props) => {
   const { post, auth } = props;
   if (!auth.uid) {
@@ -17,6 +15,10 @@ const PostDetails = (props) => {
       <div className="container section post-details">
         <div className="card">
           <div className="card-content">
+            <i
+              class="fas fa-arrow-left"
+              onClick={() => props.history.push("/")}
+            ></i>
             <span className="card-title center-align green-text text-darken-2">
               {post.title}
             </span>

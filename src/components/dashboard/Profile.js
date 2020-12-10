@@ -1,11 +1,58 @@
 import React from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
-const Profile = () => {
-  return (
-    <div>
-      <p>Profile</p>
-    </div>
-  );
+const Profile = (props) => {
+  const { user, auth } = props;
+  if (!auth.uid) {
+    return <Redirect to="/signin" />;
+  }
+  if (user) {
+    return (
+      <div className="container section">
+        <div className="card border-radius">
+          <div className="card-content profile-card">
+            <div>
+              <i class="far fa-user-circle"></i>
+              <span className="card-title center-align green-text text-darken-2">
+                {user.firstName} {user.lastName}
+              </span>
+              {user.tenantCouncilPresident && (
+                <span className="sticker">TCP</span>
+              )}
+            </div>
+          </div>
+          <div className="card-action profile-card-action grey lighten-4 grey-text border-radius">
+            <p className="center-align grey-text text-darken-2">
+              Apartment number:{" "}
+              <span className="bolder">{user.apartmentNumber}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="container center-align">
+        <p className="white-text loader-text">Loading user...</p>
+      </div>
+    );
+  }
 };
 
-export default Profile;
+const mapStateToProps = (state, ownProps) => {
+  const uid = ownProps.uid;
+  const users = state.firestore.data.users;
+  const user = users ? users[uid] : null;
+  return {
+    user: user,
+    auth: state.firebase.auth,
+  };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "users" }])
+)(Profile);
