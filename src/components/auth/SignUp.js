@@ -168,7 +168,7 @@ class SignUp extends Component {
             <div className="input-field transparent center-align">
               <button
                 type="submit"
-                className="waves-effect waves-light btn green darken-2 white-text"
+                className="waves-effect waves-light btn green darken-1 white-text"
               >
                 Sign Up
               </button>

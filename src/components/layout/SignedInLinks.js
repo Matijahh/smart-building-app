@@ -13,7 +13,7 @@ const SignedInLinks = (props) => {
         <NavLink to="/create">Schedule Event</NavLink>
       </li>
       <li>
-        <NavLink to="/">Your Devices</NavLink>
+        <NavLink to="/rooms">Your Devices</NavLink>
       </li>
       <li>
         <a onClick={props.signOut}>Log Out</a>
