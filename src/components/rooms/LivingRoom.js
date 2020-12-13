@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+
 import lightBulb from "../../assets/images/light-bulb.svg";
 import ccTv from "../../assets/images/cctv.svg";
 import television from "../../assets/images/television.svg";
 import lockDoors from "../../assets/images/doorknob.svg";
+import DeviceInsight from "./DeviceInsight";
 
 class LivingRoom extends Component {
   render() {
+    const { devices } = this.props;
     return (
       <div className="container rooms-container">
         <div className="center-alignment">
@@ -24,6 +30,9 @@ class LivingRoom extends Component {
                   <button
                     type="text"
                     className="waves-effect waves-light btn green darken-1 white-text"
+                    onClick={() => {
+                      return <DeviceInsight />;
+                    }}
                   >
                     See the insights
                   </button>
@@ -103,4 +112,15 @@ class LivingRoom extends Component {
   }
 }
 
-export default LivingRoom;
+const mapStateToProps = (state) => {
+  const devices = state.firestore.data.devices;
+  return {
+    devices: devices,
+    auth: state.firebase.auth,
+  };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "devices" }])
+)(LivingRoom);

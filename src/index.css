@@ -334,3 +334,58 @@ input[type="checkbox"]:checked + .lever {
   border-radius: 20px;
   margin: 10px 15% 0 15%;
 }
+
+/* Device Insight Styling */
+
+.device-insight {
+  height: 500px;
+}
+
+.device-insight .device-icon {
+  width: 30%;
+}
+
+.device-insight .device-info {
+  width: 60%;
+  margin-left: 10%;
+}
+
+.device-insight .device-info .device-description {
+  padding: 10px 40px 0 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.device-insight .device-info span {
+  font-size: 22px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.device-insight .device-info .switch {
+  justify-content: start;
+  padding: 20px 0;
+}
+
+.device-insight .device-info .power-consumption {
+  padding: 20px 0;
+  display: flex;
+  justify-content: start;
+}
+
+.device-insight .device-info .power-consumption .consumption-number {
+  font-size: 22px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-right: 30px;
+}
+
+.device-insight .device-info .power-consumption .consumption-price {
+  font-size: 22px;
+  color: #b30000;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-right: 30px;
+}

@@ -14,6 +14,7 @@ import LivingRoom from "./components/rooms/LivingRoom";
 import Bedroom from "./components/rooms/Bedroom";
 import Kitchen from "./components/rooms/Kitchen";
 import Bathroom from "./components/rooms/Bathroom";
+import DeviceInsight from "./components/rooms/DeviceInsight";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/bedroom" component={Bedroom} />
           <Route path="/kitchen" component={Kitchen} />
           <Route path="/bathroom" component={Bathroom} />
+          <Route path="/device/:id" component={DeviceInsight} />
           <Route path="*" component={Error} />
         </Switch>
       </div>
