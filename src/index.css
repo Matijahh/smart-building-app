@@ -322,6 +322,7 @@ input[type="checkbox"]:checked + .lever {
 .device-icon {
   width: 100px;
   margin: 0 40px;
+  fill: #81c784 !important;
 }
 
 .device-info {
