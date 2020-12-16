@@ -1,97 +1,54 @@
 import React, { Component } from "react";
-import dishes from "../../assets/images/dishes.svg";
-import extractor from "../../assets/images/extractor-hood.svg";
-import oven from "../../assets/images/oven.svg";
-import cooking from "../../assets/images/cooking.svg";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 class Kitchen extends Component {
   render() {
+    const { devices, auth } = this.props;
+    if (!auth.uid) {
+      return <Redirect to="/signin" />;
+    }
     return (
       <div className="container rooms-container">
         <div className="center-alignment">
           <div className="row">
-            <div className="col s12 m6">
-              <div className="card device-box border-radius green darken-3">
-                <img src={cooking} alt="Cooking" className="device-icon" />
-                <div className="device-info">
-                  <div class="switch">
-                    <label>
-                      <input type="checkbox" />
-                      <span class="lever"></span>
-                      Turn on/off the heat
-                    </label>
-                  </div>
-                  <button
-                    type="text"
-                    className="waves-effect waves-light btn green darken-1 white-text"
-                  >
-                    See the insights
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col s12 m6">
-              <div className="card device-box border-radius green darken-3">
-                <img src={dishes} alt="Dishes" className="device-icon" />
-                <div className="device-info">
-                  <div class="switch">
-                    <label>
-                      <input type="checkbox" />
-                      <span class="lever"></span>
-                      Wash the dishes
-                    </label>
-                  </div>
-                  <button
-                    type="text"
-                    className="waves-effect waves-light btn green darken-1 white-text"
-                  >
-                    See the insights
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col s12 m6">
-              <div className="card device-box border-radius green darken-3">
-                <img src={extractor} alt="Extractor" className="device-icon" />
-                <div className="device-info">
-                  <div class="switch">
-                    <label>
-                      <input type="checkbox" />
-                      <span class="lever"></span>
-                      Start the hood extractor
-                    </label>
-                  </div>
-                  <button
-                    type="text"
-                    className="waves-effect waves-light btn green darken-1 white-text"
-                  >
-                    See the insights
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col s12 m6">
-              <div className="card device-box border-radius green darken-3">
-                <img src={oven} alt="Oven" className="device-icon" />
-                <div className="device-info">
-                  <div class="switch">
-                    <label>
-                      <input type="checkbox" />
-                      <span class="lever"></span>
-                      Turn on/off the oven
-                    </label>
-                  </div>
-                  <button
-                    type="text"
-                    className="waves-effect waves-light btn green darken-1 white-text"
-                  >
-                    See the insights
-                  </button>
-                </div>
-              </div>
-            </div>
+            {devices &&
+              devices
+                .filter(
+                  (device) =>
+                    device.room === "kitchen" && device.user === auth.uid
+                )
+                .map((device) => {
+                  return (
+                    <div className="col s12 m6">
+                      <div className="card device-box border-radius green darken-3">
+                        <div className="overlay-image"></div>
+                        <img
+                          src={device.src}
+                          alt="Device"
+                          className="device-icon"
+                        />
+                        <div className="device-info">
+                          <div class="switch">
+                            <label>
+                              <input type="checkbox" />
+                              <span class="lever"></span>
+                              {device.phrase}
+                            </label>
+                          </div>
+                          <button
+                            type="text"
+                            className="waves-effect waves-light btn green darken-1 white-text"
+                          >
+                            See the insights
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
           </div>
         </div>
       </div>
@@ -99,4 +56,14 @@ class Kitchen extends Component {
   }
 }
 
-export default Kitchen;
+const mapStateToProps = (state) => {
+  return {
+    devices: state.firestore.ordered.devices,
+    auth: state.firebase.auth,
+  };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "devices" }])
+)(Kitchen);

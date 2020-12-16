@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
-// TODO: Make the device insights page
+//TODO: Add more items to database
+//TODO: Make diagrams of power consumption
 
 class Rooms extends Component {
   render() {

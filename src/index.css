@@ -319,10 +319,24 @@ input[type="checkbox"]:checked + .lever {
   background-color: #81c784 !important;
 }
 
+.device-box:hover .overlay-image {
+  opacity: 0;
+}
+
 .device-icon {
-  width: 100px;
-  margin: 0 40px;
-  fill: #81c784 !important;
+  width: 300px;
+  height: 100%;
+  border-radius: 30px 0 0 30px;
+}
+
+.overlay-image {
+  width: 300px;
+  height: 100%;
+  border-radius: 30px 0 0 30px;
+  position: absolute;
+  background-color: #388e3c;
+  opacity: 0.6;
+  transition: 0.5s;
 }
 
 .device-info {
@@ -343,7 +357,7 @@ input[type="checkbox"]:checked + .lever {
 }
 
 .device-insight .device-icon {
-  width: 30%;
+  width: 600px;
 }
 
 .device-insight .device-info {

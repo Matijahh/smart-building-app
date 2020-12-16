@@ -1,97 +1,54 @@
 import React, { Component } from "react";
-import wc from "../../assets/images/wc.svg";
-import washBasin from "../../assets/images/wash-basin.svg";
-import towel from "../../assets/images/towel.svg";
-import bathroom from "../../assets/images/bathroom.svg";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 class Bathroom extends Component {
   render() {
+    const { devices, auth } = this.props;
+    if (!auth.uid) {
+      return <Redirect to="/signin" />;
+    }
     return (
       <div className="container rooms-container">
         <div className="center-alignment">
           <div className="row">
-            <div className="col s12 m6">
-              <div className="card device-box border-radius green darken-3">
-                <img src={wc} alt="Wc" className="device-icon" />
-                <div className="device-info">
-                  <div class="switch">
-                    <label>
-                      <input type="checkbox" />
-                      <span class="lever"></span>
-                      Turn on/off the toilet
-                    </label>
-                  </div>
-                  <button
-                    type="text"
-                    className="waves-effect waves-light btn green darken-1 white-text"
-                  >
-                    See the insights
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col s12 m6">
-              <div className="card device-box border-radius green darken-3">
-                <img src={bathroom} alt="Bathroom" className="device-icon" />
-                <div className="device-info">
-                  <div class="switch">
-                    <label>
-                      <input type="checkbox" />
-                      <span class="lever"></span>
-                      Turn on/off the shower
-                    </label>
-                  </div>
-                  <button
-                    type="text"
-                    className="waves-effect waves-light btn green darken-1 white-text"
-                  >
-                    See the insights
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col s12 m6">
-              <div className="card device-box border-radius green darken-3">
-                <img src={towel} alt="Towel" className="device-icon" />
-                <div className="device-info">
-                  <div class="switch">
-                    <label>
-                      <input type="checkbox" />
-                      <span class="lever"></span>
-                      Dry my towels
-                    </label>
-                  </div>
-                  <button
-                    type="text"
-                    className="waves-effect waves-light btn green darken-1 white-text"
-                  >
-                    See the insights
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col s12 m6">
-              <div className="card device-box border-radius green darken-3">
-                <img src={washBasin} alt="Wash" className="device-icon" />
-                <div className="device-info">
-                  <div class="switch">
-                    <label>
-                      <input type="checkbox" />
-                      <span class="lever"></span>
-                      Clean the wash basin
-                    </label>
-                  </div>
-                  <button
-                    type="text"
-                    className="waves-effect waves-light btn green darken-1 white-text"
-                  >
-                    See the insights
-                  </button>
-                </div>
-              </div>
-            </div>
+            {devices &&
+              devices
+                .filter(
+                  (device) =>
+                    device.room === "bathroom" && device.user === auth.uid
+                )
+                .map((device) => {
+                  return (
+                    <div className="col s12 m6">
+                      <div className="card device-box border-radius green darken-3">
+                        <div className="overlay-image"></div>
+                        <img
+                          src={device.src}
+                          alt="Device"
+                          className="device-icon"
+                        />
+                        <div className="device-info">
+                          <div class="switch">
+                            <label>
+                              <input type="checkbox" />
+                              <span class="lever"></span>
+                              {device.phrase}
+                            </label>
+                          </div>
+                          <button
+                            type="text"
+                            className="waves-effect waves-light btn green darken-1 white-text"
+                          >
+                            See the insights
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
           </div>
         </div>
       </div>
@@ -99,4 +56,14 @@ class Bathroom extends Component {
   }
 }
 
-export default Bathroom;
+const mapStateToProps = (state) => {
+  return {
+    devices: state.firestore.ordered.devices,
+    auth: state.firebase.auth,
+  };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "devices" }])
+)(Bathroom);
