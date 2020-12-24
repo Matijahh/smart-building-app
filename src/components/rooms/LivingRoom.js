@@ -13,6 +13,32 @@ class LivingRoom extends Component {
     return (
       <div className="container rooms-container">
         <div className="center-alignment">
+          <i
+            class="fas fa-arrow-left room-back-icon"
+            onClick={() => {
+              this.props.history.push(`/rooms`);
+            }}
+          ></i>
+          <div className="row center-alignment">
+            <div className="col s12 m6">
+              <div className="switch">
+                <label className="green-text text-darken-3">
+                  <input type="checkbox" />
+                  <span class="lever"></span>
+                  Turn on/off the lights
+                </label>
+              </div>
+            </div>
+            <div className="col s12 m6">
+              <div class="switch">
+                <label className="green-text text-darken-3">
+                  <input type="checkbox" />
+                  <span class="lever"></span>
+                  Lock/Unlock the doors
+                </label>
+              </div>
+            </div>
+          </div>
           <div className="row">
             {devices &&
               devices
@@ -23,8 +49,9 @@ class LivingRoom extends Component {
                 .map((device) => {
                   return (
                     <div className="col s12 m6">
-                      <div className="card device-box border-radius green darken-3">
-                        <div className="overlay-image"></div>
+                      <div
+                        className={`card device-box border-radius green darken-3`}
+                      >
                         <img
                           src={device.src}
                           alt="Device"

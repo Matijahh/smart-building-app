@@ -14,8 +14,16 @@ class DeviceInsight extends Component {
       <div className="container rooms-container">
         <div className="center-alignment">
           <div className="card device-box border-radius green darken-3 device-insight">
+            <i
+              class="fas fa-arrow-left device-back-icon"
+              onClick={() => {
+                this.props.history.push(`/${device.room}`);
+              }}
+            ></i>
             <img src={device.src} alt="Light" className="device-icon" />
             <div className="device-info">
+              <span>Device Name:</span>
+              <div className="device-description">{device.name}</div>
               <span>Device Description:</span>
               <div className="device-description">{device.description}</div>
               <div class="switch">
@@ -31,7 +39,7 @@ class DeviceInsight extends Component {
                   {device.powerConsumption.consumption}KW/h
                 </div>
                 <div className="consumption-price">
-                  {device.powerConsumption.price}RSD
+                  -{device.powerConsumption.price}RSD
                 </div>
               </div>
             </div>
