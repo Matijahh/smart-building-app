@@ -9,12 +9,7 @@ import SignIn from "./components/auth/SignIn";
 import CreatePost from "./components/posts/CreatePost";
 import SignUp from "./components/auth/SignUp";
 import Error from "./components/error/Error";
-import Rooms from "./components/rooms/Rooms";
-import LivingRoom from "./components/rooms/LivingRoom";
-import Bedroom from "./components/rooms/Bedroom";
-import Kitchen from "./components/rooms/Kitchen";
-import Bathroom from "./components/rooms/Bathroom";
-import DeviceInsight from "./components/rooms/DeviceInsight";
+import YourDevices from "./components/devices/YourDevices";
 
 function App() {
   return (
@@ -29,12 +24,7 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/create" component={CreatePost} />
-          <Route path="/rooms" component={Rooms} />
-          <Route path="/livingroom" component={LivingRoom} />
-          <Route path="/bedroom" component={Bedroom} />
-          <Route path="/kitchen" component={Kitchen} />
-          <Route path="/bathroom" component={Bathroom} />
-          <Route path="/device/:id" component={DeviceInsight} />
+          <Route path="/devices" component={YourDevices} />
           <Route path="*" component={Error} />
         </Switch>
       </div>

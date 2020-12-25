@@ -13,10 +13,12 @@ const SignedInLinks = (props) => {
         <NavLink to="/create">Schedule Event</NavLink>
       </li>
       <li>
-        <NavLink to="/rooms">Your Devices</NavLink>
+        <NavLink to="/devices">Your Devices</NavLink>
       </li>
       <li>
-        <a onClick={props.signOut}>Log Out</a>
+        <NavLink to="/" onClick={props.signOut}>
+          Log Out
+        </NavLink>
       </li>
       <li>
         <NavLink to="/" className="btn btn-floating green darken-3">
