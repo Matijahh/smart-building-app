@@ -2,15 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /** Material UI Import */
-
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
 /** Custom Components Import */
-
 import TopThreeConsumers from "./TopThreeConsumers";
+import AllDevices from "./AllDevices";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,7 +69,7 @@ export default function YourDevices() {
           <TopThreeConsumers />
         </TabPanel>
         <TabPanel value={value} index={1} className="tab-panel">
-          All Devices
+          <AllDevices />
         </TabPanel>
         <TabPanel value={value} index={2} className="tab-panel">
           Wholesome Consumption
