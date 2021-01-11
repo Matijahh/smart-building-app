@@ -5,12 +5,10 @@ const PostSummary = ({ post }) => {
   return (
     <div className="card post-summary">
       <div className="card-content">
-        <span className="card-title green-text text-darken-2">
-          {post.title}
-        </span>
+        <span className="card-title teal-text text-darken-4">{post.title}</span>
         <p className="grey-text post-summary-posted-by">
           Posted by{" "}
-          <span className="post-summary-username green-text text-lighten-2">
+          <span className="post-summary-username teal-text text-darken-4">
             {post.authorFirstName} {post.authorLastName}
           </span>
         </p>

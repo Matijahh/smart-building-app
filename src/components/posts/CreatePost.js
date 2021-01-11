@@ -34,30 +34,32 @@ class CreatePost extends Component {
     return (
       <div className="container form-container valign-wrapper">
         <form onSubmit={this.handleSubmit} className="transparent">
-          <h5 className="white-text center-align form-title">Schedule Event</h5>
+          <h5 className="teal-text text-darken-4 center-align form-title">
+            Schedule Event
+          </h5>
           <div className="input-field transparent">
-            <label htmlFor="title" className="white-text">
+            <label htmlFor="title" className="teal-text text-darken-4">
               Event Title
             </label>
             <input
               type="text"
               id="title"
-              className="white-text"
+              className="teal-text text-darken-4"
               onChange={this.handleChange}
             />
           </div>
           <div className="input-field transparent">
-            <label htmlFor="content" className="white-text">
+            <label htmlFor="content" className="teal-text text-darken-4">
               What is the event for?
             </label>
             <textarea
-              className="materialize-textarea white-text"
+              className="materialize-textarea teal-text text-darken-4"
               id="content"
               onChange={this.handleChange}
             />
           </div>
           <div className="input-field transparent center-align">
-            <button className="waves-effect waves-light btn green darken-2 white-text">
+            <button className="waves-effect waves-light btn teal darken-4 white-text">
               Create
             </button>
           </div>

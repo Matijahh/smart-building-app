@@ -7,21 +7,31 @@ const SignedInLinks = (props) => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/">Dashboard</NavLink>
+        <NavLink to="/" className="teal-text text-darken-4">
+          Dashboard
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/create">Schedule Event</NavLink>
+        <NavLink to="/create" className="teal-text text-darken-4">
+          Schedule Event
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/devices">Your Devices</NavLink>
+        <NavLink to="/devices" className="teal-text text-darken-4">
+          Your Devices
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/" onClick={props.signOut}>
+        <NavLink
+          to="/"
+          onClick={props.signOut}
+          className="teal-text text-darken-4"
+        >
           Log Out
         </NavLink>
       </li>
       <li>
-        <NavLink to="/" className="btn btn-floating green darken-3">
+        <NavLink to="/" className="btn btn-floating teal darken-4">
           {props.profile.initials}
         </NavLink>
       </li>

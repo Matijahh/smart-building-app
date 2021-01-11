@@ -47,26 +47,31 @@ class SignIn extends Component {
         </p>
         <div className="container form-container valign-wrapper sign-in-form">
           <form onSubmit={this.handleSubmit} className="transparent">
-            <h5 className="white-text center-align form-title">Sign In</h5>
+            <h5 className="teal-text text-darken-4 center-align form-title">
+              Sign In
+            </h5>
             <div className="input-field transparent">
-              <label htmlFor="email" className="white-text">
+              <label
+                htmlFor="email"
+                className="teal-text teal-text text-darken-4"
+              >
                 Email
               </label>
               <input
                 type="email"
                 id="email"
-                className="white-text"
+                className="teal-text text-darken-4"
                 onChange={this.handleChange}
               />
             </div>
             <div className="input-field transparent">
-              <label htmlFor="password" className="white-text">
+              <label htmlFor="password" className="teal-text text-darken-4">
                 Password
               </label>
               <input
                 type={this.state.passVisibility ? "text" : "password"}
                 id="password"
-                className="white-text"
+                className="teal-text text-darken-4"
                 onChange={this.handleChange}
               />
               <i
@@ -79,14 +84,14 @@ class SignIn extends Component {
             <div className="input-field transparent center-align">
               <button
                 type="submit"
-                className="waves-effect waves-light btn green darken-2 white-text"
+                className="waves-effect waves-light btn teal darken-4 white-text"
               >
                 Login
               </button>
               <div style={{ marginTop: 10 }}>
                 <button
                   type="button"
-                  className="waves-effect waves-light btn-flat green-text text-darken-2"
+                  className="waves-effect waves-light btn-flat teal-text text-darken-4"
                   onClick={() => this.props.history.push("/signup")}
                 >
                   Switch to Sign Up

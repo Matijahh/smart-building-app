@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 export default function TopThreeConsumers() {
   return (
-    <Grid container spacing={1} className="top-three-consumers-container">
+    <Grid container spacing={10} className="top-three-consumers-container">
       <Grid container item xs={4}>
         <ConsumerCard
           deviceTitle="Device #1"
@@ -70,20 +70,20 @@ const ConsumerCard = (props) => {
                   label: "Days",
                   data: [12, 19, 3, 5, 2, 3],
                   backgroundColor: [
-                    "#5effc4",
-                    "#102a21",
-                    "#1f5541",
-                    "#2f8062",
-                    "#3faa83",
-                    "#4ed4a3",
+                    "#004d40",
+                    "#00695c",
+                    "#00796b",
+                    "#009688",
+                    "#80cbc4",
+                    "#b2dfdb",
                   ],
                   borderColor: [
-                    "#5effc4",
-                    "#102a21",
-                    "#1f5541",
-                    "#2f8062",
-                    "#3faa83",
-                    "#4ed4a3",
+                    "#004d40",
+                    "#00695c",
+                    "#00796b",
+                    "#009688",
+                    "#80cbc4",
+                    "#b2dfdb",
                   ],
                   borderWidth: 1,
                 },

@@ -11,7 +11,7 @@ const Navbar = (props) => {
   return auth.uid ? (
     <nav className="nav-wrapper transparent z-depth-0">
       <div className="container">
-        <Link to="/" className="brand-logo">
+        <Link to="/" className="brand-logo teal-text text-darken-4">
           SmartHome
           <img style={{ width: 30 }} src={leafLogo} alt="logo" />
         </Link>

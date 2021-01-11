@@ -10,6 +10,7 @@ import Box from "@material-ui/core/Box";
 /** Custom Components Import */
 import TopThreeConsumers from "./TopThreeConsumers";
 import AllDevices from "./AllDevices";
+import WholesomeConsumption from "./WholesomeConsumption";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -72,7 +73,7 @@ export default function YourDevices() {
           <AllDevices />
         </TabPanel>
         <TabPanel value={value} index={2} className="tab-panel">
-          Wholesome Consumption
+          <WholesomeConsumption />
         </TabPanel>
       </div>
     </div>

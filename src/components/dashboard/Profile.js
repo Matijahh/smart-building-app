@@ -16,7 +16,7 @@ const Profile = (props) => {
           <div className="card-content profile-card">
             <div>
               <i class="far fa-user-circle"></i>
-              <span className="card-title center-align green-text text-darken-2">
+              <span className="card-title center-align teal-text text-darken-4">
                 {user.firstName} {user.lastName}
               </span>
               {user.tenantCouncilPresident && (

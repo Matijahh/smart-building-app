@@ -72,26 +72,28 @@ class SignUp extends Component {
         </p>
         <div className="container form-container valign-wrapper sign-in-form">
           <form onSubmit={this.handleSubmit} className="transparent">
-            <h5 className="white-text center-align form-title">Sign Up</h5>
+            <h5 className="teal-text text-darken-4 center-align form-title">
+              Sign Up
+            </h5>
             <div className="input-field transparent">
-              <label htmlFor="email" className="white-text">
+              <label htmlFor="email" className="teal-text text-darken-4">
                 Email
               </label>
               <input
                 type="email"
                 id="email"
-                className="white-text"
+                className="teal-text text-darken-4"
                 onChange={this.handleChange}
               />
             </div>
             <div className="input-field transparent">
-              <label htmlFor="password" className="white-text">
+              <label htmlFor="password" className="teal-text text-darken-4">
                 Password
               </label>
               <input
                 type={this.state.passVisibility ? "text" : "password"}
                 id="password"
-                className="white-text"
+                className="teal-text text-darken-4"
                 onChange={this.handleChange}
               />
               <i
@@ -102,34 +104,34 @@ class SignUp extends Component {
               />
             </div>
             <div className="input-field transparent">
-              <label htmlFor="firstName" className="white-text">
+              <label htmlFor="firstName" className="teal-text text-darken-4">
                 First Name
               </label>
               <input
                 type="text"
                 id="firstName"
-                className="white-text"
+                className="teal-text text-darken-4"
                 onChange={this.handleChange}
               />
             </div>
             <div className="input-field transparent">
-              <label htmlFor="lastName" className="white-text">
+              <label htmlFor="lastName" className="teal-text text-darken-4">
                 Last Name
               </label>
               <input
                 type="text"
                 id="lastName"
-                className="white-text"
+                className="teal-text text-darken-4"
                 onChange={this.handleChange}
               />
             </div>
             <div style={{ display: "flex", marginTop: "-10px", padding: 0 }}>
               <div
-                className="input-field white-text select-gender"
+                className="input-field teal-text text-darken-4 select-gender"
                 style={{ marginRight: "5%" }}
               >
                 <select
-                  className="white-text"
+                  className="teal-text text-darken-4"
                   id="gender"
                   onChange={this.handleChange}
                 >
@@ -144,13 +146,16 @@ class SignUp extends Component {
                 className="input-field transparent apartment-input"
                 style={{ marginRight: "5%" }}
               >
-                <label htmlFor="apartmentNumber" className="white-text">
+                <label
+                  htmlFor="apartmentNumber"
+                  className="teal-text text-darken-4"
+                >
                   Apartment Number
                 </label>
                 <input
                   type="text"
                   id="apartmentNumber"
-                  className="white-text"
+                  className="teal-text text-darken-4"
                   onChange={this.handleChange}
                 />
               </div>
@@ -168,14 +173,14 @@ class SignUp extends Component {
             <div className="input-field transparent center-align">
               <button
                 type="submit"
-                className="waves-effect waves-light btn green darken-1 white-text"
+                className="waves-effect waves-light btn teal darken-4 white-text"
               >
                 Sign Up
               </button>
               <div style={{ marginTop: 10 }}>
                 <button
                   type="button"
-                  className="waves-effect waves-light btn-flat green-text text-darken-2"
+                  className="waves-effect waves-light btn-flat teal-text text-darken-4"
                   onClick={() => this.props.history.push("/signin")}
                 >
                   Switch to Sign In
