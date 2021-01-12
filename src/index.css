@@ -530,3 +530,12 @@ input[type="checkbox"]:checked + .lever {
 .wholesome-consumption-two-rows {
   margin-top: 60px !important;
 }
+
+.device-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}

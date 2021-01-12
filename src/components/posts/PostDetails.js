@@ -19,7 +19,7 @@ const PostDetails = (props) => {
               class="fas fa-arrow-left"
               onClick={() => props.history.push("/")}
             ></i>
-            <span className="card-title center-align green-text text-darken-2">
+            <span className="card-title center-align teal-text text-darken-4">
               {post.title}
             </span>
             <p className="post-content grey-text text-darken-2">
@@ -29,7 +29,7 @@ const PostDetails = (props) => {
           <div className="card-action grey lighten-4 grey-text">
             <p>
               Posted by{" "}
-              <span className="post-summary-username green-text text-lighten-2">
+              <span className="post-summary-username teal-text text-darken-4">
                 {post.authorFirstName} {post.authorLastName}
               </span>
             </p>
@@ -41,7 +41,7 @@ const PostDetails = (props) => {
   } else {
     return (
       <div className="container center-align">
-        <p className="white-text loader-text">Loading posts...</p>
+        <p className="teal-text text-darken-4 loader-text">Loading posts...</p>
       </div>
     );
   }

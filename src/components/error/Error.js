@@ -21,7 +21,7 @@ class Error extends Component {
           alt="Error"
         />
         <button
-          className="btn-error waves-effect waves-light btn green darken-2 white-text"
+          className="btn-error waves-effect waves-light btn teal darken-4 white-text"
           onClick={() => this.props.history.push("/")}
         >
           Go Back

@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TopThreeConsumers() {
+export default function TopThreeConsumers(props) {
   return (
     <Grid container spacing={10} className="top-three-consumers-container">
       <Grid container item xs={4}>
