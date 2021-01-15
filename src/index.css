@@ -488,6 +488,13 @@ input[type="checkbox"]:checked + .lever {
   background-color: white;
 }
 
+.top-three-card-description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 .MuiCardContent-root {
   background-color: white;
 }
@@ -498,12 +505,20 @@ input[type="checkbox"]:checked + .lever {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-height: 100px;
+  height: 100px;
 }
 
 .all-devices-card-info {
   width: 50%;
   padding: 0px;
+}
+
+.all-devices-card-info .card-title {
+  font-size: 15px;
+}
+
+.all-devices-card-info p {
+  text-transform: uppercase;
 }
 
 .all-devices-card-image {
@@ -535,7 +550,52 @@ input[type="checkbox"]:checked + .lever {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  margin-top: 80px;
+}
+
+.device-info-card {
+  max-width: 1200px;
+  min-height: 400px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 100px;
+}
+
+.device-info-card-image {
+  width: 50%;
+  object-fit: cover;
+  border-radius: 20px;
+  height: 300px;
+}
+
+.device-info-card-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.device-info-two-rows .card-title,
+.device-info-card-content .card-title {
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+}
+
+.device-info-card-content .card-description {
+  width: 550px;
+  font-size: 18px;
+  color: grey;
+  text-transform: none;
+}
+
+.device-info-card-content .card-tag {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.device-info-card-content .card-tag span {
+  color: grey;
+  margin-left: 10px;
 }

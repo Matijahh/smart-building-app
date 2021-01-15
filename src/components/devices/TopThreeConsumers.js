@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+import { Redirect, withRouter } from "react-router-dom";
 
 /** Material UI Import */
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,42 +19,77 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TopThreeConsumers(props) {
-  return (
-    <Grid container spacing={10} className="top-three-consumers-container">
-      <Grid container item xs={4}>
-        <ConsumerCard
-          deviceTitle="Device #1"
-          deviceDesc="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Expedita hic, impedit saepe repellendus excepturi..."
-        />
+class TopThreeConsumers extends Component {
+  render() {
+    return (
+      <Grid container spacing={10} className="top-three-consumers-container">
+        <Grid container item xs={4}>
+          <ConsumerCard
+            deviceTitle={
+              this.props.topThree.first && this.props.topThree.first.name
+            }
+            deviceDesc={
+              this.props.topThree.first && this.props.topThree.first.description
+            }
+            onClick={() => {
+              this.props.history.push(
+                `/device/${
+                  this.props.topThree.first && this.props.topThree.first.id
+                }`
+              );
+            }}
+          />
+        </Grid>
+        <Grid container item xs={4}>
+          <ConsumerCard
+            deviceTitle={
+              this.props.topThree.second && this.props.topThree.second.name
+            }
+            deviceDesc={
+              this.props.topThree.second &&
+              this.props.topThree.second.description
+            }
+            onClick={() => {
+              this.props.history.push(
+                `/device/${
+                  this.props.topThree.second && this.props.topThree.second.id
+                }`
+              );
+            }}
+          />
+        </Grid>
+        <Grid container item xs={4}>
+          <ConsumerCard
+            deviceTitle={
+              this.props.topThree.third && this.props.topThree.third.name
+            }
+            deviceDesc={
+              this.props.topThree.third && this.props.topThree.third.description
+            }
+            onClick={() => {
+              this.props.history.push(
+                `/device/${
+                  this.props.topThree.third && this.props.topThree.third.id
+                }`
+              );
+            }}
+          />
+        </Grid>
       </Grid>
-      <Grid container item xs={4}>
-        <ConsumerCard
-          deviceTitle="Device #2"
-          deviceDesc="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Expedita hic, impedit saepe repellendus excepturi..."
-        />
-      </Grid>
-      <Grid container item xs={4}>
-        <ConsumerCard
-          deviceTitle="Device #3"
-          deviceDesc="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Expedita hic, impedit saepe repellendus excepturi..."
-        />
-      </Grid>
-    </Grid>
-  );
+    );
+  }
 }
+
+export default withRouter(TopThreeConsumers);
 
 const ConsumerCard = (props) => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea onClick={props.onClick}>
         <CardContent>
           <h5 className="card-title">{props.deviceTitle}</h5>
-          <p>{props.deviceDesc}</p>
+          <p className="top-three-card-description">{props.deviceDesc}</p>
           <Doughnut
             className="doughnut-chart"
             data={{
@@ -95,8 +131,8 @@ const ConsumerCard = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" className="card-button">
-          Learn More
+        <Button size="small" className="card-button" onClick={props.onClick}>
+          See Details
         </Button>
       </CardActions>
     </Card>

@@ -1,5 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 /** Material UI Import */
 import Tabs from "@material-ui/core/Tabs";
@@ -45,37 +49,68 @@ function a11yProps(index) {
   };
 }
 
-export default function YourDevices() {
-  const [value, setValue] = React.useState(0);
+class YourDevices extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  handleChange = (event, newValue) => {
+    this.setState({
+      value: newValue,
+    });
   };
 
-  return (
-    <div className="your-devices-container">
-      <div className="your-devices-tabs">
-        <Tabs
-          orientation="vertical"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs example"
-          className="tabs-container"
-        >
-          <Tab label="Top Three Consumers" {...a11yProps(0)} />
-          <Tab label="All Devices" {...a11yProps(1)} />
-          <Tab label="Wholesome Consumption " {...a11yProps(2)} />
-        </Tabs>
-        <TabPanel value={value} index={0} className="tab-panel">
-          <TopThreeConsumers />
-        </TabPanel>
-        <TabPanel value={value} index={1} className="tab-panel">
-          <AllDevices />
-        </TabPanel>
-        <TabPanel value={value} index={2} className="tab-panel">
-          <WholesomeConsumption />
-        </TabPanel>
+  render() {
+    const { devices, auth } = this.props;
+    const topThree = {
+      first: devices && devices[0],
+      second: devices && devices[1],
+      third: devices && devices[2],
+    };
+    if (!auth.uid) {
+      return <Redirect to="/signin" />;
+    }
+    return (
+      <div className="your-devices-container">
+        <div className="your-devices-tabs">
+          <Tabs
+            orientation="vertical"
+            value={this.state.value}
+            onChange={this.handleChange}
+            aria-label="Vertical tabs example"
+            className="tabs-container"
+          >
+            <Tab label="Top Three Consumers" {...a11yProps(0)} />
+            <Tab label="All Devices" {...a11yProps(1)} />
+            <Tab label="Wholesome Consumption " {...a11yProps(2)} />
+          </Tabs>
+          <TabPanel value={this.state.value} index={0} className="tab-panel">
+            <TopThreeConsumers topThree={topThree} />
+          </TabPanel>
+          <TabPanel value={this.state.value} index={1} className="tab-panel">
+            <AllDevices devices={devices} />
+          </TabPanel>
+          <TabPanel value={this.state.value} index={2} className="tab-panel">
+            <WholesomeConsumption />
+          </TabPanel>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    devices: state.firestore.ordered.devices,
+    auth: state.firebase.auth,
+  };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "devices" }])
+)(YourDevices);
