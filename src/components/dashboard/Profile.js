@@ -36,7 +36,7 @@ const Profile = (props) => {
   } else {
     return (
       <div className="container center-align">
-        <p className="white-text loader-text">Loading user...</p>
+        <p className="teal-text text-darken-4 loader-text">Loading user...</p>
       </div>
     );
   }

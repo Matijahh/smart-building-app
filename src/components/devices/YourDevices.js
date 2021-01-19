@@ -15,6 +15,8 @@ import Box from "@material-ui/core/Box";
 import TopThreeConsumers from "./TopThreeConsumers";
 import AllDevices from "./AllDevices";
 import WholesomeConsumption from "./WholesomeConsumption";
+import BuildingDevices from "./BuildingDevices";
+import ParkingSpots from "./ParkingSpots";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -66,6 +68,16 @@ class YourDevices extends Component {
 
   render() {
     const { devices, auth } = this.props;
+    const userDevices =
+      devices &&
+      devices.filter((device) => {
+        return device.user === auth.uid;
+      });
+    const buildingDevices =
+      devices &&
+      devices.filter((device) => {
+        return device.user === "all";
+      });
     const topThree = {
       first: devices && devices[0],
       second: devices && devices[1],
@@ -87,15 +99,23 @@ class YourDevices extends Component {
             <Tab label="Top Three Consumers" {...a11yProps(0)} />
             <Tab label="All Devices" {...a11yProps(1)} />
             <Tab label="Wholesome Consumption " {...a11yProps(2)} />
+            <Tab label="Building Devices " {...a11yProps(3)} />
+            <Tab label="Parking Spots " {...a11yProps(4)} />
           </Tabs>
           <TabPanel value={this.state.value} index={0} className="tab-panel">
             <TopThreeConsumers topThree={topThree} />
           </TabPanel>
           <TabPanel value={this.state.value} index={1} className="tab-panel">
-            <AllDevices devices={devices} />
+            <AllDevices devices={userDevices} />
           </TabPanel>
           <TabPanel value={this.state.value} index={2} className="tab-panel">
             <WholesomeConsumption />
+          </TabPanel>
+          <TabPanel value={this.state.value} index={3} className="tab-panel">
+            <BuildingDevices devices={buildingDevices} />
+          </TabPanel>
+          <TabPanel value={this.state.value} index={4} className="tab-panel">
+            <ParkingSpots />
           </TabPanel>
         </div>
       </div>

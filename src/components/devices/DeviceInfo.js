@@ -51,9 +51,11 @@ class DeviceInfo extends Component {
                       {device.active ? "Yes" : "No"}
                     </span>
                   </p>
-                  <p className="card-tag">
-                    Room: <span>{device.room}</span>
-                  </p>
+                  {device.room && (
+                    <p className="card-tag">
+                      Room: <span>{device.room}</span>
+                    </p>
+                  )}
                 </div>
                 {device.src ? (
                   <img

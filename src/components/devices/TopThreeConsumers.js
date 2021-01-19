@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 /** Material UI Import */
 import { makeStyles } from "@material-ui/core/styles";

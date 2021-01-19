@@ -301,7 +301,7 @@ input[type="checkbox"]:checked + .lever {
 .device-box {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   height: 200px;
 }
 
@@ -368,14 +368,14 @@ input[type="checkbox"]:checked + .lever {
 }
 
 .device-insight .device-info .switch {
-  justify-content: start;
+  justify-content: flex-start;
   padding: 20px 0;
 }
 
 .device-insight .device-info .power-consumption {
   padding: 20px 0;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .device-insight .device-info .power-consumption .consumption-number {
@@ -450,7 +450,7 @@ input[type="checkbox"]:checked + .lever {
 }
 
 .PrivateTabIndicator-root-1 {
-  background-color: #ffffff !important;
+  background-color: #004d40 !important;
   width: 8px !important;
 }
 
@@ -598,4 +598,106 @@ input[type="checkbox"]:checked + .lever {
 .device-info-card-content .card-tag span {
   color: grey;
   margin-left: 10px;
+}
+
+/* Parking Spots Styling */
+
+.parking-container {
+  width: 1200px;
+  height: 600px;
+  border: 10px solid white;
+  position: relative;
+}
+
+.parking-spots-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.parking-spots-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.parking-spots-top {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 260px;
+}
+
+.parking-spots-bottom {
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  bottom: 0;
+  left: 590px;
+}
+
+.parking-entrance {
+  position: absolute;
+  bottom: 10px;
+  left: 260px;
+  text-align: center;
+}
+
+.parking-entrance p {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.parking-spots-left .spot,
+.parking-spots-right .spot {
+  width: 150px;
+  height: 97px;
+  border-bottom: 5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parking-spots-top .spot,
+.parking-spots-bottom .spot {
+  width: 110px;
+  height: 150px;
+  border-left: 5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.taken {
+  background-color: #e53935;
+}
+
+.parking-spots-left .spot:first-child {
+  border-bottom: none;
+}
+
+.parking-spots-right .spot:last-child {
+  border-bottom: none;
+}
+
+.parking-spots-top .spot:last-child {
+  border-right: 5px solid white;
+}
+
+.parking-spots-bottom .spot:first-child {
+  border-right: 5px solid white;
+}
+
+.parking-spots-left .spot .spot-number,
+.parking-spots-right .spot .spot-number,
+.parking-spots-top .spot .spot-number,
+.parking-spots-bottom .spot .spot-number {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
 }
