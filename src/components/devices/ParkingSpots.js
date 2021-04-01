@@ -10,6 +10,7 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 class ParkingSpots extends Component {
   render() {
     const { parking, auth } = this.props;
+    console.log(parking);
     if (!auth.uid) {
       return <Redirect to="/signin" />;
     }
