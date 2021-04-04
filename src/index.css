@@ -55,14 +55,10 @@ nav li {
 
 .form-container {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.sign-in-form {
-  height: 100vh;
 }
 
 .form-container form {
@@ -86,6 +82,13 @@ nav li {
 .form-container .input-field input,
 .form-container .input-field textarea {
   border-bottom: 1px solid #004d40;
+}
+
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #004d40;
+  -webkit-box-shadow: 0 1px 0 0 #004d40;
+  box-shadow: 0 1px 0 0 #004d40;
 }
 
 .form-container .input-field label {
@@ -135,6 +138,13 @@ input[type="checkbox"]:checked + .lever {
 
 .switch span.lever::after {
   background-color: #004d40 !important;
+}
+
+.error-message {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Posts Styling */
@@ -231,9 +241,29 @@ input[type="checkbox"]:checked + .lever {
 
 /* 404 Error Page styling */
 
+.error-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  top: 100;
+}
+
+.error-page-wrapper img {
+  margin-top: 40px;
+}
+
+.error-page-wrapper div {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 300px;
+  text-align: center;
+}
+
 .btn-error {
-  width: 30%;
-  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* Rooms Page styling */

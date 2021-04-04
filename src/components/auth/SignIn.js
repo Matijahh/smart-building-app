@@ -45,16 +45,13 @@ class SignIn extends Component {
           SmartHome
           <img style={{ width: 15 }} src={leafLogo} alt="logo" />
         </p>
-        <div className="container form-container valign-wrapper sign-in-form">
-          <form onSubmit={this.handleSubmit} className="transparent">
+        <div className="form-container sign-in-form">
+          <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
             <h5 className="teal-text text-darken-4 center-align form-title">
               Sign In
             </h5>
-            <div className="input-field transparent">
-              <label
-                htmlFor="email"
-                className="teal-text teal-text text-darken-4"
-              >
+            <div className="input-field">
+              <label htmlFor="email" className="teal-text text-darken-4">
                 Email
               </label>
               <input
@@ -64,7 +61,7 @@ class SignIn extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="input-field transparent">
+            <div className="input-field">
               <label htmlFor="password" className="teal-text text-darken-4">
                 Password
               </label>
@@ -81,23 +78,11 @@ class SignIn extends Component {
                 onClick={this.handleVisibilityChange}
               />
             </div>
-            <div className="input-field transparent center-align">
-              <button
-                type="submit"
-                className="waves-effect waves-light btn teal darken-4 white-text"
-              >
+            <div className="input-field center-align">
+              <button type="submit" className="btn teal darken-4 white-text">
                 Login
               </button>
-              <div style={{ marginTop: 10 }}>
-                <button
-                  type="button"
-                  className="waves-effect waves-light btn-flat teal-text text-darken-4"
-                  onClick={() => this.props.history.push("/signup")}
-                >
-                  Switch to Sign Up
-                </button>
-              </div>
-              <div className="red-text center-align">
+              <div className="error-message red-text text-darken-4 center-align">
                 {authError ? <p>{authError}</p> : null}
               </div>
             </div>

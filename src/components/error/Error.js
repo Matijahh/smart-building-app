@@ -1,18 +1,10 @@
 import React, { Component } from "react";
-import errorImage from "../../assets/images/404ErrorPage.svg";
+import errorImage from "../../assets/images/ErrorPageIllustration.svg";
 
 class Error extends Component {
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          alignItems: "center",
-          top: 100,
-        }}
-      >
+      <div className="error-page-wrapper">
         <img
           style={{
             width: 800,
@@ -20,12 +12,16 @@ class Error extends Component {
           src={errorImage}
           alt="Error"
         />
-        <button
-          className="btn-error waves-effect waves-light btn teal darken-4 white-text"
-          onClick={() => this.props.history.push("/")}
-        >
-          Go Back
-        </button>
+        <div className="transparent teal-text text-darken-4">
+          You must be lost! We'll help you out.{" "}
+          <span
+            className="btn-error"
+            onClick={() => this.props.history.push("/")}
+          >
+            Go back
+          </span>{" "}
+          to where you were.
+        </div>
       </div>
     );
   }
