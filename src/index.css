@@ -174,7 +174,7 @@ input[type="checkbox"]:checked + .lever {
 
 .add-new-tenant-form {
   align-items: initial;
-  margin-top: 25px;
+  margin-top: 20px;
   padding: 20px;
   height: max-content;
   background-color: #ffffff;
