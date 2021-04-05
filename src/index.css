@@ -85,10 +85,20 @@ nav li {
 }
 
 input[type="email"]:not(.browser-default):focus:not([readonly]),
-input[type="password"]:not(.browser-default):focus:not([readonly]) {
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+textarea:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #004d40;
   -webkit-box-shadow: 0 1px 0 0 #004d40;
   box-shadow: 0 1px 0 0 #004d40;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+  -webkit-text-fill-color: #004d40 !important;
 }
 
 .form-container .input-field label {
@@ -107,7 +117,20 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) {
 
 .select-gender,
 .apartment-input {
-  width: 30%;
+  width: 100%;
+}
+
+.add-new-tenant-form .select-gender select {
+  display: block;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #004d40;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.add-new-tenant-form .select-gender select:focus {
+  outline: none;
 }
 
 .select-wrapper .select-dropdown {
@@ -147,7 +170,42 @@ input[type="checkbox"]:checked + .lever {
   transform: translate(-50%, -50%);
 }
 
-/* Posts Styling */
+/* Dashboard Styling */
+
+.add-new-tenant-form {
+  align-items: initial;
+  margin-top: 25px;
+  padding: 20px;
+  height: max-content;
+  background-color: #ffffff;
+  border-radius: 30px;
+  webkit-box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
+    0 1px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.dashboard-group-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-group-buttons .dashboard-tab-button {
+  color: #004d40;
+  width: 200px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  border: 3px solid #004d40;
+  border-radius: 30px;
+  webkit-box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
+    0 1px 5px 0 rgb(0 0 0 / 20%);
+}
 
 .post-summary {
   border-radius: 20px;
