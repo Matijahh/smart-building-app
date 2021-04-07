@@ -5,18 +5,18 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
-/** Material UI Imports */
-import Button from "@material-ui/core/Button";
-
 import Profile from "./Profile";
 import AddNewTenant from "./AddNewTenant";
 import PostList from "../posts/PostList";
+import ScheduleEvent from "./ScheduleEvent";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       addNewTenant: false,
+      yourEvents: true,
+      scheduleEvent: false,
     };
   }
   render() {
@@ -28,16 +28,48 @@ class Dashboard extends Component {
       <div className="dashboard container">
         <div className="row">
           <div className="col s12 m8">
-            {/*<PostList posts={posts} />*/}
+            {this.state.yourEvents && <PostList posts={posts} />}
             {this.state.addNewTenant && <AddNewTenant />}
+            {this.state.scheduleEvent && <ScheduleEvent />}
           </div>
           <div className="col s12 m4">
             <Profile uid={auth.uid} />
             <div className="dashboard-group-buttons">
               <div
                 className="dashboard-tab-button"
+                style={{ backgroundColor: this.state.yourEvents && "white" }}
                 onClick={() => {
-                  this.setState({ addNewTenant: true });
+                  this.setState({
+                    addNewTenant: false,
+                    scheduleEvent: false,
+                    yourEvents: true,
+                  });
+                }}
+              >
+                Your Events
+              </div>
+              <div
+                className="dashboard-tab-button"
+                style={{ backgroundColor: this.state.scheduleEvent && "white" }}
+                onClick={() => {
+                  this.setState({
+                    addNewTenant: false,
+                    scheduleEvent: true,
+                    yourEvents: false,
+                  });
+                }}
+              >
+                Schedule Event
+              </div>
+              <div
+                className="dashboard-tab-button"
+                style={{ backgroundColor: this.state.addNewTenant && "white" }}
+                onClick={() => {
+                  this.setState({
+                    addNewTenant: true,
+                    scheduleEvent: false,
+                    yourEvents: false,
+                  });
                 }}
               >
                 Add New Tenant

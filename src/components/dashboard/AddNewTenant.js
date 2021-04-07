@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import "materialize-css";
-
-import leafLogo from "../../assets/images/leaf-solid.svg";
 
 const AddNewTenant = () => {
   return (
@@ -88,6 +86,9 @@ const AddNewTenant = () => {
               className="teal-text text-darken-4"
             />
           </div>
+        </div>
+        <div className="form-group-buttons">
+          <div className="dashboard-tab-button">Add New Tenant</div>
         </div>
       </form>
     </div>
