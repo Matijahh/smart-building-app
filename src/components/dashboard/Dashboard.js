@@ -27,17 +27,18 @@ class Dashboard extends Component {
     return (
       <div className="dashboard container">
         <div className="row">
-          <div className="col s12 m8">
-            {this.state.yourEvents && <PostList posts={posts} />}
-            {this.state.addNewTenant && <AddNewTenant />}
-            {this.state.scheduleEvent && <ScheduleEvent />}
-          </div>
           <div className="col s12 m4">
             <Profile uid={auth.uid} />
-            <div className="dashboard-group-buttons">
+            <div
+              className="dashboard-group-buttons"
+              style={{ alignItems: "initial", marginLeft: 32 }}
+            >
               <div
                 className="dashboard-tab-button"
-                style={{ backgroundColor: this.state.yourEvents && "white" }}
+                style={{
+                  backgroundColor: this.state.yourEvents && "#004d40",
+                  color: this.state.yourEvents && "white",
+                }}
                 onClick={() => {
                   this.setState({
                     addNewTenant: false,
@@ -50,7 +51,10 @@ class Dashboard extends Component {
               </div>
               <div
                 className="dashboard-tab-button"
-                style={{ backgroundColor: this.state.scheduleEvent && "white" }}
+                style={{
+                  backgroundColor: this.state.scheduleEvent && "#004d40",
+                  color: this.state.scheduleEvent && "white",
+                }}
                 onClick={() => {
                   this.setState({
                     addNewTenant: false,
@@ -63,7 +67,10 @@ class Dashboard extends Component {
               </div>
               <div
                 className="dashboard-tab-button"
-                style={{ backgroundColor: this.state.addNewTenant && "white" }}
+                style={{
+                  backgroundColor: this.state.addNewTenant && "#004d40",
+                  color: this.state.addNewTenant && "white",
+                }}
                 onClick={() => {
                   this.setState({
                     addNewTenant: true,
@@ -75,6 +82,11 @@ class Dashboard extends Component {
                 Add New Tenant
               </div>
             </div>
+          </div>
+          <div className="col s12 m8">
+            {this.state.yourEvents && <PostList posts={posts} />}
+            {this.state.addNewTenant && <AddNewTenant />}
+            {this.state.scheduleEvent && <ScheduleEvent />}
           </div>
         </div>
       </div>

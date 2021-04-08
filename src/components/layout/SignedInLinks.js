@@ -12,11 +12,6 @@ const SignedInLinks = (props) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/create" className="teal-text text-darken-4">
-          Schedule Event
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/devices" className="teal-text text-darken-4">
           Your Devices
         </NavLink>

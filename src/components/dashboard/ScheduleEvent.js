@@ -8,9 +8,13 @@ import {
 } from "@material-ui/pickers";
 
 const ScheduleEvent = () => {
-  const [selectedDate, setSelectedDate] = React.useState(null);
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const [startDate, setStartDate] = React.useState(null);
+  const [endDate, setEndDate] = React.useState(null);
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
+  };
+  const handleEndDateChange = (date) => {
+    setEndDate(date);
   };
   return (
     <div className="form-container schedule-event-form">
@@ -48,8 +52,8 @@ const ScheduleEvent = () => {
               id="date-picker-inline"
               label="Event Start"
               margin="normal"
-              value={selectedDate}
-              onChange={handleDateChange}
+              value={startDate}
+              onChange={handleStartDateChange}
               KeyboardButtonProps={{
                 "aria-label": "change date",
               }}
@@ -62,8 +66,8 @@ const ScheduleEvent = () => {
               id="date-picker-inline"
               label="Event End"
               margin="normal"
-              value={selectedDate}
-              onChange={handleDateChange}
+              value={endDate}
+              onChange={handleEndDateChange}
               KeyboardButtonProps={{
                 "aria-label": "change date",
               }}

@@ -11,7 +11,7 @@ const Profile = (props) => {
   }
   if (user) {
     return (
-      <div className="container section">
+      <div className="container section" style={{ margin: 0 }}>
         <div className="card border-radius">
           <div className="card-content profile-card">
             <div>
