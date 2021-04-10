@@ -4,17 +4,16 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
-/** Material UI Import */
+/** Material UI Imports */
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Grid from "@material-ui/core/Grid";
 
 /** Chart JS Imports */
-import { Doughnut, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
-/** Images Import */
+/** Images Imports */
 import noImage from "../../assets/images/noImage.png";
 
 class DeviceInfo extends Component {
@@ -29,10 +28,12 @@ class DeviceInfo extends Component {
           <Card className="device-info-card">
             <IconButton
               aria-label="back"
-              className="teal-text text-darken-4"
-              onClick={() => this.props.history.goBack()}
+              className="teal-text text-darken-4 device-info-icon"
             >
-              <ArrowBackIcon />
+              <i
+                class="fas fa-arrow-left"
+                onClick={() => this.props.history.goBack()}
+              ></i>
             </IconButton>
             <CardContent>
               <div className="device-info-card-content">
@@ -81,84 +82,54 @@ class DeviceInfo extends Component {
                 )}
               </div>
               <Grid container spacing={10} className="device-info-two-rows">
-                <Grid container item xs={6} className="device-info-grid-item">
-                  <h5 className="card-title">Consumption Last Week</h5>
-                  <Doughnut
-                    className="doughnut-chart"
-                    data={{
-                      labels: [
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday",
-                        "Saturday",
-                        "Sunday",
-                      ],
-                      datasets: [
-                        {
-                          label: "Days",
-                          data: [124, 196, 333, 512, 233, 99, 201],
-                          backgroundColor: [
-                            "#004d40",
-                            "#00695c",
-                            "#00796b",
-                            "#009688",
-                            "#80cbc4",
-                            "#b2dfdb",
-                            "#e0f2f1",
-                          ],
-                          borderColor: [
-                            "#004d40",
-                            "#00695c",
-                            "#00796b",
-                            "#009688",
-                            "#80cbc4",
-                            "#b2dfdb",
-                            "#e0f2f1",
-                          ],
-                          borderWidth: 1,
-                        },
-                      ],
-                    }}
-                  />
-                </Grid>
-                <Grid container item xs={6}>
+                <Grid container item xs={12}>
                   <h5 style={{ marginBottom: 30 }} className="card-title">
-                    Consumption Last Hour
+                    Device Consumption
                   </h5>
-                  <Bar
+                  <Line
                     data={{
                       labels: [
-                        "5 Minutes Ago",
-                        "10 Minutes Ago",
-                        "30 Minutes Ago",
-                        "An Hour Ago",
+                        "January 2020",
+                        "February 2020",
+                        "March 2020",
+                        "April 2020",
+                        "May 2020",
+                        "June 2020",
+                        "July 2020",
+                        "August 2020",
+                        "September 2020",
+                        "October 2020",
+                        "November 2020",
+                        "December 2020",
                       ],
                       datasets: [
                         {
-                          label: ["Consumption in kWh"],
-                          data: [244, 326, 478, 120],
-                          backgroundColor: [
-                            "#004d40",
-                            "#00695c",
-                            "#00796b",
-                            "#009688",
+                          label: "Consumption in kWh",
+                          data: [
+                            244,
+                            326,
+                            478,
+                            120,
+                            566,
+                            234,
+                            120,
+                            204,
+                            444,
+                            321,
+                            544,
+                            670,
                           ],
-                          borderColor: [
-                            "#004d40",
-                            "#00695c",
-                            "#00796b",
-                            "#009688",
-                          ],
+                          borderColor: "#004d40",
+                          backgroundColor: "#004d40",
                           borderWidth: 10,
                           fill: "none",
-                          lineTension: 0,
                           pointBackgroundColor: "#00897b",
                           pointBorderColor: "#00897b",
                         },
                       ],
                     }}
+                    height={400}
+                    width={100}
                     options={{
                       maintainAspectRatio: false,
                       scales: {

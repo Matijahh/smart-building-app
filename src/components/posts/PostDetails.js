@@ -1,4 +1,6 @@
 import React from "react";
+
+/** Important Library Imports  */
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
@@ -33,7 +35,12 @@ const PostDetails = (props) => {
                 {post.authorFirstName} {post.authorLastName}
               </span>
             </p>
-            <p>{moment(post.createdAt.toDate()).calendar()}</p>
+            <div style={{ display: "flex", margin: 0, padding: 0 }}>
+              <p>Start Date: {moment(post.createdAt.toDate()).calendar()}</p>
+              <p style={{ marginLeft: 50 }}>
+                End Date: {moment(post.createdAt.toDate()).calendar()}
+              </p>
+            </div>
           </div>
         </div>
       </div>

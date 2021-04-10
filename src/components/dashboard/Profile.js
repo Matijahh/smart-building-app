@@ -1,4 +1,6 @@
 import React from "react";
+
+/** Important Library Imports  */
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";

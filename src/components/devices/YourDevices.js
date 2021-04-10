@@ -1,60 +1,27 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
+/** Important Library Imports  */
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
-/** Material UI Import */
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-
-/** Custom Components Import */
+/** Custom Components Imports */
 import TopThreeConsumers from "./TopThreeConsumers";
 import AllDevices from "./AllDevices";
 import WholesomeConsumption from "./WholesomeConsumption";
 import BuildingDevices from "./BuildingDevices";
 import ParkingSpots from "./ParkingSpots";
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
-
+import Profile from "../dashboard/Profile";
 class YourDevices extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      topThreeConsumers: true,
+      allDevices: false,
+      wholesomeConsumption: false,
+      buildingDevices: false,
+      parkingSlots: false,
       value: 0,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -87,36 +54,117 @@ class YourDevices extends Component {
       return <Redirect to="/signin" />;
     }
     return (
-      <div className="your-devices-container">
-        <div className="your-devices-tabs">
-          <Tabs
-            orientation="vertical"
-            value={this.state.value}
-            onChange={this.handleChange}
-            aria-label="Vertical tabs example"
-            className="tabs-container"
-          >
-            <Tab label="Top Three Consumers" {...a11yProps(0)} />
-            <Tab label="All Devices" {...a11yProps(1)} />
-            <Tab label="Wholesome Consumption " {...a11yProps(2)} />
-            <Tab label="Building Devices " {...a11yProps(3)} />
-            <Tab label="Parking Spots " {...a11yProps(4)} />
-          </Tabs>
-          <TabPanel value={this.state.value} index={0} className="tab-panel">
-            <TopThreeConsumers topThree={topThree} />
-          </TabPanel>
-          <TabPanel value={this.state.value} index={1} className="tab-panel">
-            <AllDevices devices={userDevices} />
-          </TabPanel>
-          <TabPanel value={this.state.value} index={2} className="tab-panel">
-            <WholesomeConsumption />
-          </TabPanel>
-          <TabPanel value={this.state.value} index={3} className="tab-panel">
-            <BuildingDevices devices={buildingDevices} />
-          </TabPanel>
-          <TabPanel value={this.state.value} index={4} className="tab-panel">
-            <ParkingSpots />
-          </TabPanel>
+      <div className="dashboard container">
+        <div className="row">
+          <div className="col s12 m4">
+            <Profile uid={auth.uid} />
+            <div
+              className="dashboard-group-buttons"
+              style={{ alignItems: "initial", marginLeft: 32 }}
+            >
+              <div
+                className="dashboard-tab-button"
+                style={{
+                  backgroundColor: this.state.topThreeConsumers && "#004d40",
+                  color: this.state.topThreeConsumers && "white",
+                }}
+                onClick={() => {
+                  this.setState({
+                    wholesomeConsumption: false,
+                    allDevices: false,
+                    topThreeConsumers: true,
+                    buildingDevices: false,
+                    parkingSlots: false,
+                  });
+                }}
+              >
+                Top Three Household Consumers
+              </div>
+              <div
+                className="dashboard-tab-button"
+                style={{
+                  backgroundColor: this.state.allDevices && "#004d40",
+                  color: this.state.allDevices && "white",
+                }}
+                onClick={() => {
+                  this.setState({
+                    wholesomeConsumption: false,
+                    allDevices: true,
+                    topThreeConsumers: false,
+                    buildingDevices: false,
+                    parkingSlots: false,
+                  });
+                }}
+              >
+                Household Devices
+              </div>
+              <div
+                className="dashboard-tab-button"
+                style={{
+                  backgroundColor: this.state.wholesomeConsumption && "#004d40",
+                  color: this.state.wholesomeConsumption && "white",
+                }}
+                onClick={() => {
+                  this.setState({
+                    wholesomeConsumption: true,
+                    allDevices: false,
+                    topThreeConsumers: false,
+                    buildingDevices: false,
+                    parkingSlots: false,
+                  });
+                }}
+              >
+                Household Consumption
+              </div>
+              <div
+                className="dashboard-tab-button"
+                style={{
+                  backgroundColor: this.state.buildingDevices && "#004d40",
+                  color: this.state.buildingDevices && "white",
+                }}
+                onClick={() => {
+                  this.setState({
+                    wholesomeConsumption: false,
+                    allDevices: false,
+                    topThreeConsumers: false,
+                    buildingDevices: true,
+                    parkingSlots: false,
+                  });
+                }}
+              >
+                Building Devices
+              </div>
+              <div
+                className="dashboard-tab-button"
+                style={{
+                  backgroundColor: this.state.parkingSlots && "#004d40",
+                  color: this.state.parkingSlots && "white",
+                }}
+                onClick={() => {
+                  this.setState({
+                    wholesomeConsumption: false,
+                    allDevices: false,
+                    topThreeConsumers: false,
+                    buildingDevices: false,
+                    parkingSlots: true,
+                  });
+                }}
+              >
+                Parking Spots
+              </div>
+            </div>
+          </div>
+          <div className="col s12 m8">
+            {this.state.topThreeConsumers && (
+              <TopThreeConsumers topThree={topThree} />
+            )}
+            {this.state.allDevices && <AllDevices devices={userDevices} />}
+            {this.state.wholesomeConsumption && <WholesomeConsumption />}
+            {this.state.buildingDevices && (
+              <BuildingDevices devices={buildingDevices} />
+            )}
+            {this.state.parkingSlots && <ParkingSpots />}
+          </div>
         </div>
       </div>
     );

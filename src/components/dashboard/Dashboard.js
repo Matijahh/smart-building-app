@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 
+/** Important Library Imports  */
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
+/** Custom Components Imports */
 import Profile from "./Profile";
 import AddNewTenant from "./AddNewTenant";
 import PostList from "../posts/PostList";
 import ScheduleEvent from "./ScheduleEvent";
+import DemandResponseService from "./DemandResponseService";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -17,6 +20,7 @@ class Dashboard extends Component {
       addNewTenant: false,
       yourEvents: true,
       scheduleEvent: false,
+      addDeviceToDRS: false,
     };
   }
   render() {
@@ -44,6 +48,7 @@ class Dashboard extends Component {
                     addNewTenant: false,
                     scheduleEvent: false,
                     yourEvents: true,
+                    addDeviceToDRS: false,
                   });
                 }}
               >
@@ -60,6 +65,7 @@ class Dashboard extends Component {
                     addNewTenant: false,
                     scheduleEvent: true,
                     yourEvents: false,
+                    addDeviceToDRS: false,
                   });
                 }}
               >
@@ -76,10 +82,28 @@ class Dashboard extends Component {
                     addNewTenant: true,
                     scheduleEvent: false,
                     yourEvents: false,
+                    addDeviceToDRS: false,
                   });
                 }}
               >
                 Add New Tenant
+              </div>
+              <div
+                className="dashboard-tab-button"
+                style={{
+                  backgroundColor: this.state.addDeviceToDRS && "#004d40",
+                  color: this.state.addDeviceToDRS && "white",
+                }}
+                onClick={() => {
+                  this.setState({
+                    addNewTenant: false,
+                    scheduleEvent: false,
+                    yourEvents: false,
+                    addDeviceToDRS: true,
+                  });
+                }}
+              >
+                Demand Response Service
               </div>
             </div>
           </div>
@@ -87,6 +111,7 @@ class Dashboard extends Component {
             {this.state.yourEvents && <PostList posts={posts} />}
             {this.state.addNewTenant && <AddNewTenant />}
             {this.state.scheduleEvent && <ScheduleEvent />}
+            {this.state.addDeviceToDRS && <DemandResponseService />}
           </div>
         </div>
       </div>
@@ -103,5 +128,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "posts", orderBy: ["createdAt", "desc"] }])
+  firestoreConnect([{ collection: "posts" }])
 )(Dashboard);

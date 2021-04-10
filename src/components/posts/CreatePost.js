@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+
+/** Important Library Imports  */
 import { connect } from "react-redux";
-import { createPost } from "../../store/actions/postActions";
 import { Redirect } from "react-router-dom";
+
+/** Redux Actions Imports */
+import { createPost } from "../../store/actions/postActions";
 
 class CreatePost extends Component {
   constructor(props) {

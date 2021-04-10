@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
+/** Important Library Imports  */
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+/** Redux Actions Imports */
 import { signIn } from "../../store/actions/authActions";
+
+/** Images Imports */
 import leafLogo from "../../assets/images/leaf-solid.svg";
 
 class SignIn extends Component {

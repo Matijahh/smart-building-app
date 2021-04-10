@@ -1,9 +1,16 @@
 import React from "react";
+
+/** Important Library Imports  */
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
+/** Redux Actions Imports */
 import { signOut } from "../../store/actions/authActions";
+
+/** Images Imports */
 import leafLogo from "../../assets/images/leaf-solid.svg";
 
+/** Custom Components Imports */
 import SignedInLinks from "./SignedInLinks";
 
 const Navbar = (props) => {

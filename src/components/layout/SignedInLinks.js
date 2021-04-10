@@ -1,6 +1,10 @@
 import React from "react";
+
+/** Important Library Imports  */
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+
+/** Redux Actions Imports */
 import { signOut } from "../../store/actions/authActions";
 
 const SignedInLinks = (props) => {

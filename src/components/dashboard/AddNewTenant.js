@@ -1,4 +1,6 @@
 import React from "react";
+
+/** Materialize Imports */
 import "materialize-css";
 
 const AddNewTenant = () => {

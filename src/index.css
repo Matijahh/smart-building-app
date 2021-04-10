@@ -71,6 +71,8 @@ nav li {
   letter-spacing: 4px;
   text-transform: uppercase;
   padding-bottom: 20px;
+  text-align: center;
+  width: 100%;
 }
 
 .form-container .btn,
@@ -376,7 +378,7 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
 }
 
 .error-page-wrapper img {
-  margin-top: 40px;
+  margin-top: 90px;
 }
 
 .error-page-wrapper div {
@@ -614,7 +616,10 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
 
 .top-three-consumers-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  height: 90vh;
+  justify-content: space-evenly;
 }
 
 .top-three-consumers-container .card-title {
@@ -655,6 +660,20 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
   background-color: white;
 }
 
+.consumer-card-wrapper {
+  width: 100%;
+  height: 200px;
+  padding: 0 10px;
+}
+
+.consumer-card-wrapper button {
+  height: 200px;
+}
+
+.consumer-card-content {
+  display: flex;
+}
+
 /* All Devices Styling */
 
 .all-devices-card-content {
@@ -680,14 +699,15 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
 .all-devices-card-image {
   width: 50%;
   object-fit: cover;
-  border-radius: 7px;
+  border-radius: 20px;
 }
 
 /* Wholesome Consumption Styling */
 
 .wholesome-consumption-container {
-  width: 1200px;
+  width: 100%;
   height: 500px;
+  margin-top: 40px;
 }
 
 .wholesome-consumption-container .title {
@@ -707,13 +727,12 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 25px;
 }
 
 .device-info-card {
   max-width: 1200px;
-  min-height: 400px;
-  border-radius: 20px;
+  border-radius: 30px !important;
   padding: 10px;
   margin-bottom: 100px;
 }
@@ -759,15 +778,17 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
 /* Parking Spots Styling */
 
 .parking-container {
-  width: 1200px;
-  height: 600px;
-  border: 10px solid white;
+  width: 100%;
+  height: 700px;
+  border: 10px solid #004d40;
   position: relative;
+  margin-top: 25px;
+  border-radius: 30px;
 }
 
 .parking-spots-left {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   display: flex;
   flex-direction: column-reverse;
@@ -783,7 +804,7 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
   position: absolute;
   display: flex;
   top: 0;
-  left: 260px;
+  left: 185px;
 }
 
 .parking-spots-bottom {
@@ -791,29 +812,36 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
   display: flex;
   flex-direction: row-reverse;
   bottom: 0;
-  left: 590px;
+  left: 463px;
+}
+
+.parking-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .parking-entrance {
   position: absolute;
   bottom: 10px;
-  left: 260px;
+  left: 160px;
   text-align: center;
 }
 
 .parking-entrance p {
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: white;
+  color: #004d40;
   font-weight: bold;
   font-size: 18px;
 }
 
 .parking-spots-left .spot,
 .parking-spots-right .spot {
-  width: 150px;
+  width: 100px;
   height: 97px;
-  border-bottom: 5px solid white;
+  border-bottom: 5px solid #004d40;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -821,16 +849,16 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
 
 .parking-spots-top .spot,
 .parking-spots-bottom .spot {
-  width: 110px;
-  height: 150px;
-  border-left: 5px solid white;
+  width: 97px;
+  height: 100px;
+  border-left: 5px solid #004d40;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .taken {
-  background-color: #e53935;
+  background-color: #004d40;
 }
 
 .parking-spots-left .spot:first-child {
@@ -842,11 +870,11 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
 }
 
 .parking-spots-top .spot:last-child {
-  border-right: 5px solid white;
+  border-right: 5px solid #004d40;
 }
 
 .parking-spots-bottom .spot:first-child {
-  border-right: 5px solid white;
+  border-right: 5px solid #004d40;
 }
 
 .parking-spots-left .spot .spot-number,
@@ -855,5 +883,12 @@ input#date-picker-inline[type="text"]:not(.browser-default) {
 .parking-spots-bottom .spot .spot-number {
   font-size: 20px;
   font-weight: bold;
+  color: #004d40;
+}
+
+.parking-spots-left .taken .spot-number,
+.parking-spots-right .taken .spot-number,
+.parking-spots-top .taken .spot-number,
+.parking-spots-bottom .taken .spot-number {
   color: white;
 }

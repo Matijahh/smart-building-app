@@ -1,11 +1,16 @@
 import React, { Component } from "react";
+
+/** Important Library Imports  */
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
-/** Material UI Import */
+/** Material UI Imports */
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+
+/** Images Imports */
+import leafLogo from "../../assets/images/leaf-solid.svg";
 
 class ParkingSpots extends Component {
   render() {
@@ -16,9 +21,12 @@ class ParkingSpots extends Component {
     }
     return (
       <div className="parking-container">
+        <div className="parking-logo">
+          <img style={{ width: 70 }} src={leafLogo} alt="logo" />
+        </div>
         <div className="parking-spots-left">
           {parking &&
-            parking.slice(0, 6).map((spot) => {
+            parking.slice(1, 8).map((spot) => {
               return (
                 <div className={`spot ${!spot.available ? "taken" : ""}`}>
                   <div className="spot-number">{spot.spot}</div>
@@ -38,7 +46,7 @@ class ParkingSpots extends Component {
         </div>
         <div className="parking-spots-top">
           {parking &&
-            parking.slice(6, 12).map((spot) => {
+            parking.slice(8, 12).map((spot) => {
               return (
                 <div className={`spot ${!spot.available ? "taken" : ""}`}>
                   <div className="spot-number">{spot.spot}</div>
@@ -47,7 +55,7 @@ class ParkingSpots extends Component {
             })}
         </div>
         <div className="parking-entrance">
-          <ArrowUpwardIcon fontSize="large" style={{ fill: "#ffffff" }} />
+          <ArrowUpwardIcon fontSize="large" />
           <p>Parking Entrance</p>
         </div>
         <div className="parking-spots-bottom">

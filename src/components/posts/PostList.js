@@ -1,6 +1,9 @@
 import React from "react";
+
+/** Important Library Imports  */
 import { Link } from "react-router-dom";
 
+/** Custom Components Import */
 import PostSummary from "./PostSummary";
 
 const PostList = ({ posts }) => {

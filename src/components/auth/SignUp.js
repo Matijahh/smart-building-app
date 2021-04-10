@@ -1,10 +1,17 @@
 import React, { Component } from "react";
+
+/** Important Library Imports  */
 import { connect } from "react-redux";
-import { signUp } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
+
+/** Materialize Imports */
 import "materialize-css";
 import M from "materialize-css";
 
+/** Redux Actions Imports */
+import { signUp } from "../../store/actions/authActions";
+
+/** Images Imports */
 import leafLogo from "../../assets/images/leaf-solid.svg";
 
 class SignUp extends Component {

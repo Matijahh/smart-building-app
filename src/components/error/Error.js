@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+/** Images Imports */
 import errorImage from "../../assets/images/ErrorPageIllustration.svg";
 
 class Error extends Component {
