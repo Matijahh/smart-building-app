@@ -18,7 +18,8 @@ import noImage from "../../assets/images/noImage.png";
 
 class DeviceInfo extends Component {
   render() {
-    const { device, auth } = this.props;
+    const { auth } = this.props;
+    const device = this.props.location.state;
     if (!auth.uid) {
       return <Redirect to="/signin" />;
     }
@@ -44,24 +45,19 @@ class DeviceInfo extends Component {
                     Active:{" "}
                     <span
                       className={`${
-                        device.active
+                        device.status
                           ? "green-text text-lighten-1"
                           : "red-text text-lighten-1"
                       }`}
                     >
-                      {device.active ? "Yes" : "No"}
+                      {device.status ? "Yes" : "No"}
                     </span>
                   </p>
-                  {device.room && (
-                    <p className="card-tag">
-                      Room: <span>{device.room}</span>
-                    </p>
-                  )}
                 </div>
-                {device.src ? (
+                {device.imageUrl ? (
                   <img
                     className="device-info-card-image"
-                    src={device.src}
+                    src={device.imageUrl}
                     alt="Device"
                   />
                 ) : (
@@ -106,18 +102,8 @@ class DeviceInfo extends Component {
                         {
                           label: "Consumption in kWh",
                           data: [
-                            244,
-                            326,
-                            478,
-                            120,
-                            566,
-                            234,
-                            120,
-                            204,
-                            444,
-                            321,
-                            544,
-                            670,
+                            244, 326, 478, 120, 566, 234, 120, 204, 444, 321,
+                            544, 670,
                           ],
                           borderColor: "#004d40",
                           backgroundColor: "#004d40",

@@ -23,11 +23,12 @@ class TopThreeConsumers extends Component {
             this.props.topThree.first && this.props.topThree.first.description
           }
           onClick={() => {
-            this.props.history.push(
-              `/device/${
-                this.props.topThree.first && this.props.topThree.first.id
-              }`
-            );
+            this.props.history.push({
+              pathname: `/device/${
+                this.props.topThree.first && this.props.topThree.first.name
+              }`,
+              state: this.props.topThree.first,
+            });
           }}
         />
         <ConsumerCard
@@ -38,11 +39,12 @@ class TopThreeConsumers extends Component {
             this.props.topThree.second && this.props.topThree.second.description
           }
           onClick={() => {
-            this.props.history.push(
-              `/device/${
+            this.props.history.push({
+              pathname: `/device/${
                 this.props.topThree.second && this.props.topThree.second.id
-              }`
-            );
+              }`,
+              state: this.props.topThree.second,
+            });
           }}
         />
         <ConsumerCard
@@ -53,11 +55,12 @@ class TopThreeConsumers extends Component {
             this.props.topThree.third && this.props.topThree.third.description
           }
           onClick={() => {
-            this.props.history.push(
-              `/device/${
+            this.props.history.push({
+              pathname: `/device/${
                 this.props.topThree.third && this.props.topThree.third.id
-              }`
-            );
+              }`,
+              state: this.props.topThree.third,
+            });
           }}
         />
       </div>

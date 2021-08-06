@@ -34,21 +34,12 @@ class YourDevices extends Component {
   };
 
   render() {
-    const { devices, auth } = this.props;
-    const userDevices =
-      devices &&
-      devices.filter((device) => {
-        return device.user === auth.uid;
-      });
-    const buildingDevices =
-      devices &&
-      devices.filter((device) => {
-        return device.user === "all";
-      });
+    const { household, auth } = this.props;
+    const userDevices = household && household.devices;
     const topThree = {
-      first: devices && devices[0],
-      second: devices && devices[1],
-      third: devices && devices[2],
+      first: userDevices && userDevices.device1,
+      second: userDevices && userDevices.device2,
+      third: userDevices && userDevices.device3,
     };
     if (!auth.uid) {
       return <Redirect to="/signin" />;
@@ -161,9 +152,9 @@ class YourDevices extends Component {
             {this.state.allDevices && <AllDevices devices={userDevices} />}
             {this.state.wholesomeConsumption && <WholesomeConsumption />}
             {this.state.buildingDevices && (
-              <BuildingDevices devices={buildingDevices} />
+              <BuildingDevices household={household} />
             )}
-            {this.state.parkingSlots && <ParkingSpots />}
+            {this.state.parkingSlots && <ParkingSpots household={household} />}
           </div>
         </div>
       </div>
@@ -172,13 +163,18 @@ class YourDevices extends Component {
 }
 
 const mapStateToProps = (state) => {
+  const auth = state.firebase.auth;
+  const users = state.firestore.data.tenants;
+  const user = users && auth ? users[auth.uid] : null;
+  const households = state.firestore.data.households;
+  const household = user && households[user.household];
   return {
-    devices: state.firestore.ordered.devices,
-    auth: state.firebase.auth,
+    household: household,
+    auth: auth,
   };
 };
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "devices" }])
+  firestoreConnect([{ collection: "households" }])
 )(YourDevices);

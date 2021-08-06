@@ -37,14 +37,18 @@ class AllDevices extends Component {
         <h5 className="teal-text text-darken-4 center-align form-title">
           Household Devices
         </h5>
-        {this.props.devices.map((device) => {
+        {Object.entries(this.props.devices).map((device, key) => {
           return (
-            <Grid container item xs={4} key={device.id}>
+            <Grid container item xs={4} key={key}>
               <DeviceCard
-                deviceTitle={device.name}
-                deviceRoom={device.room}
-                deviceSrc={device.src}
-                onClick={() => this.props.history.push(`/device/${device.id}`)}
+                deviceTitle={device[1].name}
+                deviceSrc={device[1].imageUrl}
+                onClick={() =>
+                  this.props.history.push({
+                    pathname: `/device/${device[1].name}`,
+                    state: device[1],
+                  })
+                }
               />
             </Grid>
           );
@@ -65,7 +69,6 @@ const DeviceCard = (props) => {
           <div className="all-devices-card-content">
             <div className="all-devices-card-info">
               <h5 className="card-title">{props.deviceTitle}</h5>
-              <p>{props.deviceRoom}</p>
             </div>
             {props.deviceSrc ? (
               <img

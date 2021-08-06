@@ -1,23 +1,37 @@
-export const createPost = (post) => {
+export const createEvent = (event) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
-    const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     firestore
-      .collection("posts")
+      .collection("events")
       .add({
-        ...post,
-        authorFirstName: profile.firstName,
-        authorLastName: profile.lastName,
-        authorId: authorId,
-        createdAt: new Date(),
+        ...event,
+        tenant: authorId,
       })
       .then(() => {
-        dispatch({ type: "CREATE_POST", post });
+        dispatch({ type: "CREATE_EVENT", event });
       })
       .catch((err) => {
-        dispatch({ type: "CREATE_POST_ERROR", err });
+        dispatch({ type: "CREATE_EVENT_ERROR", err });
+      });
+  };
+};
+
+export const createTenant = (tenant) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore();
+    firestore
+      .collection("tenants")
+      .add({
+        ...tenant,
+      })
+      .then(() => {
+        dispatch({ type: "CREATE_TENANT", tenant });
+      })
+      .catch((err) => {
+        dispatch({ type: "CREATE_TENANT_ERROR", err });
       });
   };
 };

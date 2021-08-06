@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { Redirect } from "react-router-dom";
 
 /** Material UI Imports */
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
@@ -14,11 +13,7 @@ import leafLogo from "../../assets/images/leaf-solid.svg";
 
 class ParkingSpots extends Component {
   render() {
-    const { parking, auth } = this.props;
-    console.log(parking);
-    if (!auth.uid) {
-      return <Redirect to="/signin" />;
-    }
+    const { parking } = this.props;
     return (
       <div className="parking-container">
         <div className="parking-logo">
@@ -76,7 +71,6 @@ class ParkingSpots extends Component {
 const mapStateToProps = (state) => {
   return {
     parking: state.firestore.ordered.parking,
-    auth: state.firebase.auth,
   };
 };
 

@@ -9,7 +9,7 @@ const PostSummary = ({ post }) => {
       <div className="card-content">
         <span className="card-title teal-text text-darken-4">{post.title}</span>
         <p className="grey-text post-summary-date">
-          {moment(post.createdAt.toDate()).calendar()}
+          {moment(post.from.toDate()).calendar()}
         </p>
       </div>
     </div>

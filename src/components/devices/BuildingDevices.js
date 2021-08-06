@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
+/** Important Library Imports  */
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+
 /** Material UI Import */
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -20,6 +25,9 @@ const useStyles = makeStyles({
 
 class BuildingDevices extends Component {
   render() {
+    const { buildings } = this.props;
+    const building = buildings && buildings[0];
+    const devices = building ? building.devices : null;
     return (
       <Grid
         container
@@ -35,24 +43,39 @@ class BuildingDevices extends Component {
         <h5 className="teal-text text-darken-4 center-align form-title">
           Building Devices
         </h5>
-        {this.props.devices.map((device) => {
-          return (
-            <Grid container item xs={4} key={device.id}>
-              <DeviceCard
-                deviceTitle={device.name}
-                deviceSrc={device.src}
-                deviceActive={device.active}
-                onClick={() => this.props.history.push(`/device/${device.id}`)}
-              />
-            </Grid>
-          );
-        })}
+        {devices &&
+          Object.entries(devices).map((device, key) => {
+            return (
+              <Grid container item xs={4} key={key}>
+                <DeviceCard
+                  deviceTitle={device[1].name}
+                  deviceSrc={device[1].imageUrl}
+                  onClick={() =>
+                    this.props.history.push({
+                      pathname: `/device/${device[1].name}`,
+                      state: device[1],
+                    })
+                  }
+                />
+              </Grid>
+            );
+          })}
       </Grid>
     );
   }
 }
 
-export default withRouter(BuildingDevices);
+const mapStateToProps = (state) => {
+  const buildings = state.firestore.ordered.buildings;
+  return {
+    buildings: buildings,
+  };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "buildings" }])
+)(withRouter(BuildingDevices));
 
 const DeviceCard = (props) => {
   const classes = useStyles();
@@ -63,7 +86,6 @@ const DeviceCard = (props) => {
           <div className="all-devices-card-content">
             <div className="all-devices-card-info">
               <h5 className="card-title">{props.deviceTitle}</h5>
-              <p>{props.deviceActive ? "ACTIVE" : "NOT ACTIVE"}</p>
             </div>
             {props.deviceSrc ? (
               <img

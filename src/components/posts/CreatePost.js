@@ -5,14 +5,16 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 /** Redux Actions Imports */
-import { createPost } from "../../store/actions/postActions";
+import { createEvent } from "../../store/actions/postActions";
 
 class CreatePost extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
-      content: "",
+      description: "",
+      from: null,
+      to: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +28,7 @@ class CreatePost extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createPost(this.state);
+    this.props.createEvent(this.state);
     this.props.history.push("/");
   }
 
@@ -58,7 +60,7 @@ class CreatePost extends Component {
             </label>
             <textarea
               className="materialize-textarea teal-text text-darken-4"
-              id="content"
+              id="description"
               onChange={this.handleChange}
             />
           </div>
@@ -81,7 +83,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPost: (post) => dispatch(createPost(post)),
+    createPost: (post) => dispatch(createEvent(post)),
   };
 };
 

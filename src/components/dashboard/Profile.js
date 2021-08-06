@@ -7,7 +7,7 @@ import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
 const Profile = (props) => {
-  const { user, auth } = props;
+  const { user, auth, household } = props;
   if (!auth.uid) {
     return <Redirect to="/signin" />;
   }
@@ -19,17 +19,17 @@ const Profile = (props) => {
             <div>
               <i class="far fa-user-circle"></i>
               <span className="card-title center-align teal-text text-darken-4">
-                {user.firstName} {user.lastName}
+                {user.name} {user.surname}
               </span>
-              {user.tenantCouncilPresident && (
-                <span className="sticker">TCP</span>
-              )}
+              {user.tcp && <span className="sticker">TCP</span>}
             </div>
           </div>
           <div className="card-action profile-card-action grey lighten-4 grey-text border-radius">
             <p className="center-align grey-text text-darken-2">
               Apartment number:{" "}
-              <span className="bolder">{user.apartmentNumber}</span>
+              <span className="bolder">
+                {household && household.numOfApartment}
+              </span>
             </p>
           </div>
         </div>
@@ -46,15 +46,18 @@ const Profile = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   const uid = ownProps.uid;
-  const users = state.firestore.data.users;
+  const users = state.firestore.data.tenants;
+  const households = state.firestore.data.households;
   const user = users ? users[uid] : null;
+  const household = households && user ? households[user.household] : null;
   return {
     user: user,
+    household: household,
     auth: state.firebase.auth,
   };
 };
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "users" }])
+  firestoreConnect([{ collection: "tenants" }, { collection: "households" }])
 )(Profile);

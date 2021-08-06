@@ -8,7 +8,7 @@ import { Redirect } from "react-router-dom";
 import moment from "moment";
 
 const PostDetails = (props) => {
-  const { post, auth } = props;
+  const { post, auth, user } = props;
   if (!auth.uid) {
     return <Redirect to="/signin" />;
   }
@@ -25,20 +25,20 @@ const PostDetails = (props) => {
               {post.title}
             </span>
             <p className="post-content grey-text text-darken-2">
-              {post.content}
+              {post.description}
             </p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <p>
               Posted by{" "}
               <span className="post-summary-username teal-text text-darken-4">
-                {post.authorFirstName} {post.authorLastName}
+                {user.name} {user.surname}
               </span>
             </p>
             <div style={{ display: "flex", margin: 0, padding: 0 }}>
-              <p>Start Date: {moment(post.createdAt.toDate()).calendar()}</p>
+              <p>Start Date: {moment(post.from.toDate()).calendar()}</p>
               <p style={{ marginLeft: 50 }}>
-                End Date: {moment(post.createdAt.toDate()).calendar()}
+                End Date: {moment(post.to.toDate()).calendar()}
               </p>
             </div>
           </div>
@@ -56,15 +56,18 @@ const PostDetails = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
-  const posts = state.firestore.data.posts;
+  const posts = state.firestore.data.events;
   const post = posts ? posts[id] : null;
+  const users = state.firestore.data.tenants;
+  const user = users && post ? users[post.tenant] : null;
   return {
     post: post,
+    user: user,
     auth: state.firebase.auth,
   };
 };
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "posts" }])
+  firestoreConnect([{ collection: "events" }])
 )(PostDetails);
