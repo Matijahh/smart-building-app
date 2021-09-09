@@ -21,6 +21,11 @@ const SignedInLinks = (props) => {
         </NavLink>
       </li>
       <li>
+        <NavLink to="/education" className="teal-text text-darken-4">
+          Smart Energy
+        </NavLink>
+      </li>
+      <li>
         <NavLink
           to="/"
           onClick={props.signOut}

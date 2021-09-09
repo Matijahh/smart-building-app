@@ -16,6 +16,7 @@ class TopThreeConsumers extends Component {
     return (
       <div className="top-three-consumers-container">
         <ConsumerCard
+          deviceConsumption={this.props.topThree.first.consumption}
           deviceTitle={
             this.props.topThree.first && this.props.topThree.first.name
           }
@@ -32,6 +33,7 @@ class TopThreeConsumers extends Component {
           }}
         />
         <ConsumerCard
+          deviceConsumption={this.props.topThree.second.consumption}
           deviceTitle={
             this.props.topThree.second && this.props.topThree.second.name
           }
@@ -48,6 +50,7 @@ class TopThreeConsumers extends Component {
           }}
         />
         <ConsumerCard
+          deviceConsumption={this.props.topThree.third.consumption}
           deviceTitle={
             this.props.topThree.third && this.props.topThree.third.name
           }
@@ -86,8 +89,14 @@ const ConsumerCard = (props) => {
                 datasets: [
                   {
                     label: "Days",
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: props.deviceConsumption,
                     backgroundColor: [
+                      "#004d40",
+                      "#00695c",
+                      "#00796b",
+                      "#009688",
+                      "#80cbc4",
+                      "#b2dfdb",
                       "#004d40",
                       "#00695c",
                       "#00796b",
@@ -96,6 +105,12 @@ const ConsumerCard = (props) => {
                       "#b2dfdb",
                     ],
                     borderColor: [
+                      "#004d40",
+                      "#00695c",
+                      "#00796b",
+                      "#009688",
+                      "#80cbc4",
+                      "#b2dfdb",
                       "#004d40",
                       "#00695c",
                       "#00796b",

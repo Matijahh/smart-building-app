@@ -11,6 +11,7 @@ import SignUp from "./components/auth/SignUp";
 import Error from "./components/error/Error";
 import YourDevices from "./components/devices/YourDevices";
 import DeviceInfo from "./components/devices/DeviceInfo";
+import Education from "./components/education/Education";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/create" component={CreatePost} />
           <Route path="/devices" component={YourDevices} />
           <Route path="/device/:id" component={DeviceInfo} />
+          <Route path="/education" component={Education} />
           <Route path="*" component={Error} />
         </Switch>
       </div>

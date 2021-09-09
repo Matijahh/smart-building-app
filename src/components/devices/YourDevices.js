@@ -36,10 +36,31 @@ class YourDevices extends Component {
   render() {
     const { household, auth } = this.props;
     const userDevices = household && household.devices;
+    const consumptionArray = [];
+    for (const key in userDevices) {
+      consumptionArray.push(userDevices[key].consumptionTotal);
+    }
+    let firstDevice = null;
+    let secondDevice = null;
+    let thirdDevice = null;
+    const consumptionMaxThree = consumptionArray
+      .sort((a, b) => (a < b ? 1 : a > b ? -1 : 0))
+      .slice(0, 3);
+    for (const key in userDevices) {
+      if (userDevices[key].consumptionTotal === consumptionMaxThree[0]) {
+        firstDevice = key;
+      }
+      if (userDevices[key].consumptionTotal === consumptionMaxThree[1]) {
+        secondDevice = key;
+      }
+      if (userDevices[key].consumptionTotal === consumptionMaxThree[2]) {
+        thirdDevice = key;
+      }
+    }
     const topThree = {
-      first: userDevices && userDevices.device1,
-      second: userDevices && userDevices.device2,
-      third: userDevices && userDevices.device3,
+      first: userDevices && userDevices[firstDevice],
+      second: userDevices && userDevices[secondDevice],
+      third: userDevices && userDevices[thirdDevice],
     };
     if (!auth.uid) {
       return <Redirect to="/signin" />;
@@ -150,7 +171,9 @@ class YourDevices extends Component {
               <TopThreeConsumers topThree={topThree} />
             )}
             {this.state.allDevices && <AllDevices devices={userDevices} />}
-            {this.state.wholesomeConsumption && <WholesomeConsumption />}
+            {this.state.wholesomeConsumption && (
+              <WholesomeConsumption household={household} />
+            )}
             {this.state.buildingDevices && (
               <BuildingDevices household={household} />
             )}

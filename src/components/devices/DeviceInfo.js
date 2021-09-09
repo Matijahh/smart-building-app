@@ -85,26 +85,23 @@ class DeviceInfo extends Component {
                   <Line
                     data={{
                       labels: [
-                        "January 2020",
-                        "February 2020",
-                        "March 2020",
-                        "April 2020",
-                        "May 2020",
-                        "June 2020",
-                        "July 2020",
-                        "August 2020",
                         "September 2020",
                         "October 2020",
                         "November 2020",
                         "December 2020",
+                        "January 2021",
+                        "February 2021",
+                        "March 2021",
+                        "April 2021",
+                        "May 2021",
+                        "June 2021",
+                        "July 2021",
+                        "August 2021",
                       ],
                       datasets: [
                         {
                           label: "Consumption in kWh",
-                          data: [
-                            244, 326, 478, 120, 566, 234, 120, 204, 444, 321,
-                            544, 670,
-                          ],
+                          data: device.consumption,
                           borderColor: "#004d40",
                           backgroundColor: "#004d40",
                           borderWidth: 10,
